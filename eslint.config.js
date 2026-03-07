@@ -6,5 +6,9 @@ module.exports = defineConfig([
   expoConfig,
   {
     ignores: ['dist/*'],
+    rules: {
+      'react/jsx-no-comment-textnodes': 'off',
+      'react/no-unescaped-entities': 'off',
+    },
   },
 ]);
