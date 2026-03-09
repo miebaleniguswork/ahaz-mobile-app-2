@@ -12,14 +12,8 @@ import {
 export default function RegisterContact() {
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Image
-        source={require("../assets/images/ahaz-logo.png")}
-        style={styles.logo}
-      />
-      <Text style={styles.title}>Create Your Account</Text>
+     
       <Text style={styles.subtitle}>Contact information</Text>
-
-    
 
       <Text style={styles.label}>Email</Text>
       <TextInput
