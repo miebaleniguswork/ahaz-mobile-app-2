@@ -36,7 +36,7 @@ const Hero = () => {
               style={styles.filledButton}
               onPress={() => router.push("./register")}
             >
-              <Text style={styles.filledButtonText}>Create Account sample hello or later </Text>
+              <Text style={styles.filledButtonText}>Create Account </Text>
             </TouchableOpacity>
 
             <TouchableOpacity
