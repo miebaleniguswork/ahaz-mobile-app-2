@@ -1,3 +1,4 @@
+import { router } from "expo-router";
 import React from "react";
 import {
   Dimensions,
@@ -8,7 +9,7 @@ import {
   View,
 } from "react-native";
 
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 const { height } = Dimensions.get("window");
 
@@ -19,7 +20,7 @@ const Hero = () => {
   return (
     <View style={[styles.container, { paddingTop: 0 }]}>
       <ImageBackground
-        source={require("../../assets/images/ahaz-hero.png")}
+        source={require("../assets/images/ahaz-hero.png")}
         style={styles.background}
         resizeMode="cover"
       >
@@ -31,10 +32,17 @@ const Hero = () => {
             Learn & connect at Ahazawi, a gateway to a brighter future.
           </Text>
           <View style={styles.buttonContainer}>
-            <TouchableOpacity style={styles.outlineButton}>
-              <Text style={styles.outlineButtonText}>Create Account</Text>
+            <TouchableOpacity
+              style={styles.filledButton}
+              onPress={() => router.push("./register")}
+            >
+              <Text style={styles.filledButtonText}>Create Account sample hello or later </Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.filledButton}>
+
+            <TouchableOpacity
+              style={styles.filledButton}
+              onPress={() => router.push("./login")}
+            >
               <Text style={styles.filledButtonText}>Login</Text>
             </TouchableOpacity>
           </View>
@@ -52,7 +60,7 @@ const styles = StyleSheet.create({
   background: {
     flex: 1,
   },
-  
+
   overlay: {
     flex: 1,
     backgroundColor: "rgba(0, 0, 0, 0.5)",

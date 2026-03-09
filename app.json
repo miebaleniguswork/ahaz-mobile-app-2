@@ -14,7 +14,8 @@
     },
     "android": {
       "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
+        // briefly understand what these are in accord to the images in assets
+        // "backgroundColor": "#E6F4FE",
         // "foregroundImage": "./assets/images/android-icon-foreground.png",
         "foregroundImage": "./assets/images/ahaz-logo.png",
         // "backgroundImage": "./assets/images/android-icon-background.png",

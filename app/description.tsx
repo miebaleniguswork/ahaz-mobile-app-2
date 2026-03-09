@@ -7,7 +7,7 @@ const Description = () => {
     <View style={styles.container}>
       {/* Hero Image Section */}
       <Image 
-        source={require('../../assets/images/ahaz-team.png')} 
+        source={require('../assets/images/ahaz-team.png')} 
         style={styles.heroImage}
         resizeMode="cover"
       />

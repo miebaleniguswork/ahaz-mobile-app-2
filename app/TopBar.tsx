@@ -9,11 +9,10 @@ const TopBar = () => {
       <View style={styles.content}>
         <View style={styles.logoContainer}>
           <Image
-            source={require("../../assets/images/ahaz-logo.png")}
+            source={require("../assets/images/ahaz-logo.png")}
             style={styles.logo}
             resizeMode="contain"
           />
-          <Text style={styles.title}>Ahaz</Text>
         </View>
 
         <TouchableOpacity>

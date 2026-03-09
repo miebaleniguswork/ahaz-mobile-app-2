@@ -8,7 +8,7 @@ const Trainers = () => {
       name: 'Asmelash Girmay',
       role: 'Digitalization and Cybersecurity',
       bio: "A lecturer at MIT, Ethiopia, holds BSc and MSC degrees from MIT and KTH respectively. He's a digitalization and cybersecurity expert with 12 years of software development experience. Asm also founded Ahaz Platforms.",
-      image: require('../../assets/images/ahaz-hero.png'),
+      image: require('../assets/images/ahaz-hero.png'),
     },
     // You can add the others (Bruk Kiros, Tesfay Tareke) here
   ];

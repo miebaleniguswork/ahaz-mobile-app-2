@@ -1,12 +1,12 @@
-import { ScrollView, StyleSheet,  StatusBar } from 'react-native';
-import Description from './description';
-import PopularCourses from './courses';
-import CourseCategories from './categories';
-import Trainers from './trainers';
-import Hero from './hero';
+import { ScrollView, StatusBar, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import CourseCategories from './categories';
+import PopularCourses from './courses';
+import Description from './description';
 import Footer from './footer';
+import Hero from './hero';
 import TopBar from './TopBar';
+import Trainers from './trainers';
 
 const Home = () => {
   return (
