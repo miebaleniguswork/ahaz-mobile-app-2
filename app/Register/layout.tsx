@@ -1,4 +1,11 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
 interface Props {
   children: React.ReactNode;
@@ -40,23 +47,32 @@ export default function RegisterLayout({
         </Text>
       </View>
 
-      {children}
+      <ScrollView
+        style={styles.formScroll}
+        contentContainerStyle={styles.formContent}
+        showsVerticalScrollIndicator={false}
+        keyboardShouldPersistTaps="handled"
+      >
+        {children}
+      </ScrollView>
 
-      <View style={styles.buttonRow}>
-        {prevStep && (
-          <TouchableOpacity style={styles.backButton} onPress={prevStep}>
-            <Text style={styles.backText}>Back</Text>
+      <View style={styles.bottomArea}>
+        <View style={styles.buttonRow}>
+          {prevStep && (
+            <TouchableOpacity style={styles.backButton} onPress={prevStep}>
+              <Text style={styles.backText}>Back</Text>
+            </TouchableOpacity>
+          )}
+
+          <TouchableOpacity style={styles.nextButton} onPress={nextStep}>
+            <Text style={styles.buttonText}>Next</Text>
           </TouchableOpacity>
-        )}
+        </View>
 
-        <TouchableOpacity style={styles.nextButton} onPress={nextStep}>
-          <Text style={styles.buttonText}>Next</Text>
-        </TouchableOpacity>
+        <Text style={styles.footer}>
+          Terms of Service • Privacy Policy • Deletion Instructions
+        </Text>
       </View>
-
-      <Text style={styles.footer}>
-        Terms of Service • Privacy Policy • Deletion Instructions
-      </Text>
     </View>
   );
 }
@@ -118,6 +134,18 @@ const styles = StyleSheet.create({
     color: "#999",
   },
 
+  formScroll: {
+    flex: 1,
+  },
+
+  formContent: {
+    flexGrow: 1,
+  },
+
+  bottomArea: {
+    paddingTop: 10,
+  },
+
   buttonRow: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -155,7 +183,7 @@ const styles = StyleSheet.create({
   footer: {
     textAlign: "center",
     color: "#1E8E14",
-    marginTop: 40,
+    marginTop: 20,
     fontSize: 12,
   },
 });
