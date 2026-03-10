@@ -1,72 +1,64 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
-import RegisterLayout from "./layout";
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 export default function RegisterMore() {
   const [sex, setSex] = useState<"Male" | "Female" | null>(null);
 
-  const handleNext = () => {
-    console.log("Proceeding to next step...");
-  };
-
-  const handleBack = () => {
-    console.log("Going back...");
-  };
-
   return (
-    <RegisterLayout
-      title="More about you"
-      step={4} // Example step number
-      totalSteps={6}
-      nextStep={handleNext}
-      prevStep={handleBack}
-    >
-      <View style={styles.content}>
-        <Text style={styles.label}>Birthdate</Text>
-        <View style={styles.dropdownRow}>
-          <View style={styles.dropdown}>
-            <Text style={styles.dropdownText}>Ye...</Text>
-          </View>
-          <View style={styles.dropdown}>
-            <Text style={styles.dropdownText}>M...</Text>
-          </View>
-          <View style={styles.dropdown}>
-            <Text style={styles.dropdownText}>Day</Text>
-          </View>
-        </View>
+    <ScrollView contentContainerStyle={styles.container}>
+      <Text style={styles.label}>Birthdate</Text>
 
-        <Text style={styles.label}>Sex</Text>
-        <View style={styles.radioRow}>
-          <TouchableOpacity 
-            style={styles.radioButtonContainer} 
-            onPress={() => setSex("Male")}
-          >
-            <View style={[styles.radioCircle, sex === "Male" && styles.selectedCircle]} />
-            <Text style={styles.radioLabel}>Male</Text>
-          </TouchableOpacity>
+      <View style={styles.dropdownRow}>
+        <TouchableOpacity style={styles.dropdown}>
+          <Text style={styles.dropdownText}>Year</Text>
+          <Text style={styles.arrow}>▼</Text>
+        </TouchableOpacity>
 
-          <TouchableOpacity 
-            style={styles.radioButtonContainer} 
-            onPress={() => setSex("Female")}
-          >
-            <View style={[styles.radioCircle, sex === "Female" && styles.selectedCircle]} />
-            <Text style={styles.radioLabel}>Female</Text>
-          </TouchableOpacity>
-        </View>
+        <TouchableOpacity style={styles.dropdown}>
+          <Text style={styles.dropdownText}>Month</Text>
+          <Text style={styles.arrow}>▼</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.dropdown}>
+          <Text style={styles.dropdownText}>Day</Text>
+          <Text style={styles.arrow}>▼</Text>
+        </TouchableOpacity>
       </View>
-    </RegisterLayout>
+
+      <Text style={styles.label}>Sex</Text>
+
+      <View style={styles.radioRow}>
+        <TouchableOpacity
+          style={styles.radioButtonContainer}
+          onPress={() => setSex("Male")}
+        >
+          <View style={[styles.radioCircle, sex === "Male" && styles.selectedCircle]}>
+            {sex === "Male" && <View style={styles.innerCircle} />}
+          </View>
+          <Text style={styles.radioLabel}>Male</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={styles.radioButtonContainer}
+          onPress={() => setSex("Female")}
+        >
+          <View style={[styles.radioCircle, sex === "Female" && styles.selectedCircle]}>
+            {sex === "Female" && <View style={styles.innerCircle} />}
+          </View>
+          <Text style={styles.radioLabel}>Female</Text>
+        </TouchableOpacity>
+      </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  content: {
+  container: {
     marginTop: 20,
   },
   label: {
     fontSize: 16,
-    color: "#555",
     marginBottom: 10,
-    fontWeight: "500",
   },
   dropdownRow: {
     flexDirection: "row",
@@ -74,38 +66,55 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
   dropdown: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
     borderWidth: 1,
-    borderColor: "#CCC",
-    borderRadius: 5,
-    padding: 12,
-    width: "30%",
-    backgroundColor: "#F9F9F9",
+    borderColor: "#ddd",
+    borderRadius: 8,
+    height: 50,
+    width: "31%",
+    paddingHorizontal: 10,
+    backgroundColor: "#fff",
   },
   dropdownText: {
-    color: "#888",
+    color: "#999",
+    fontSize: 14,
+  },
+  arrow: {
+    fontSize: 10,
+    color: "#ccc",
   },
   radioRow: {
     flexDirection: "row",
-    gap: 20,
+    gap: 30,
+    marginTop: 5,
   },
   radioButtonContainer: {
     flexDirection: "row",
     alignItems: "center",
   },
   radioCircle: {
-    height: 20,
-    width: 20,
-    borderRadius: 10,
+    height: 22,
+    width: 22,
+    borderRadius: 11,
     borderWidth: 2,
-    borderColor: "#888",
+    borderColor: "#bbb",
+    alignItems: "center",
+    justifyContent: "center",
     marginRight: 10,
   },
   selectedCircle: {
-    backgroundColor: "#1E8E14",
     borderColor: "#1E8E14",
+  },
+  innerCircle: {
+    height: 10,
+    width: 10,
+    borderRadius: 5,
+    backgroundColor: "#1E8E14",
   },
   radioLabel: {
     fontSize: 16,
-    color: "#777",
+    color: "#555",
   },
 });

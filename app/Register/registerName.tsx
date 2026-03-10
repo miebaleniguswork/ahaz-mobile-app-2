@@ -21,7 +21,7 @@ export default function RegisterName({ data, updateData }: Props) {
 
       <Text style={styles.label}>First name</Text>
       <TextInput
-        placeholder="E.g., Selam"
+        placeholder="E.g. Selam"
         style={styles.input}
         value={data.firstName}
         onChangeText={(text) => updateData({ firstName: text })}
@@ -29,7 +29,7 @@ export default function RegisterName({ data, updateData }: Props) {
 
       <Text style={styles.label}>Last name</Text>
       <TextInput
-        placeholder="E.g., Mesele"
+        placeholder="E.g. Mesele"
         style={styles.input}
         value={data.lastName}
         onChangeText={(text) => updateData({ lastName: text })}

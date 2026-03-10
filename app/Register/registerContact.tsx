@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
 import CountryPicker, {
   Country,
-  CountryCode
+  CountryCode,
 } from "react-native-country-picker-modal";
 
 export default function RegisterContact() {
@@ -12,8 +12,6 @@ export default function RegisterContact() {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.subtitle}>Contact information</Text>
-
       <Text style={styles.label}>Email</Text>
       <TextInput
         placeholder="Enter valid email address"
@@ -50,10 +48,7 @@ export default function RegisterContact() {
 
 const styles = StyleSheet.create({
   container: {
-    flexGrow: 1,
-    backgroundColor: "#fff",
-    padding: 25,
-    paddingTop: 60,
+    marginTop: 20,
   },
   logo: {
     width: 180,

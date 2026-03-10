@@ -3,6 +3,8 @@ import RegisterLayout from "./layout";
 import RegisterCredentials from "./registerCredentials";
 import RegisterLocation from "./registerLocation";
 import RegisterName from "./registerName";
+import RegisterContact from "./registerContact";
+import RegisterMore from "./registerMore";
 
 export default function RegistrationFlow() {
   const [step, setStep] = useState(1);
@@ -23,6 +25,8 @@ export default function RegistrationFlow() {
 
   const steps = [
     { component: RegisterName, title: "Your Name" },
+    { component: RegisterContact, title: "Contact Information" },
+    { component: RegisterMore, title: "More about you" },
     { component: RegisterLocation, title: "Your Location" },
     { component: RegisterCredentials, title: "Account Credentials" },
   ];

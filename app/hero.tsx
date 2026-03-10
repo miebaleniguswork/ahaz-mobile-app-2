@@ -1,7 +1,6 @@
 import { router } from "expo-router";
 import React from "react";
 import {
-  Dimensions,
   ImageBackground,
   StyleSheet,
   Text,
@@ -9,20 +8,13 @@ import {
   View,
 } from "react-native";
 
-import { useSafeAreaInsets } from "react-native-safe-area-context";
-
-
 import RegistrationFlow from "./Register/registerFlow";
 
-export  function RegisterPage() {
+export function RegisterPage() {
   return <RegistrationFlow />;
 }
-const { height } = Dimensions.get("window");
 
 const Hero = () => {
-  const insets = useSafeAreaInsets();
-  const topBarHeight = 60;
-
   return (
     <View style={[styles.container, { paddingTop: 0 }]}>
       <ImageBackground
