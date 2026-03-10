@@ -1,18 +1,17 @@
-import React from "react";
-import {
-    Image,
-    ScrollView,
-    StyleSheet,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View,
-} from "react-native";
+import React, { useState } from "react";
+import { ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
+import CountryPicker, {
+  Country,
+  CountryCode
+} from "react-native-country-picker-modal";
 
 export default function RegisterContact() {
+  const [countryCode, setCountryCode] = useState<CountryCode>("ET");
+  const [callingCode, setCallingCode] = useState<string>("251");
+  const [phone, setPhone] = useState("");
+
   return (
     <ScrollView contentContainerStyle={styles.container}>
-     
       <Text style={styles.subtitle}>Contact information</Text>
 
       <Text style={styles.label}>Email</Text>
@@ -23,29 +22,28 @@ export default function RegisterContact() {
       />
 
       <Text style={styles.label}>Mobile Number</Text>
+
       <View style={styles.phoneContainer}>
-        <View style={styles.flagPlaceholder}>
-          <Text>🇪🇹 ▼</Text>
-        </View>
+        <CountryPicker
+          countryCode={countryCode}
+          withFilter
+          withFlag
+          withCallingCode
+          withCallingCodeButton
+          onSelect={(country: Country) => {
+            setCountryCode(country.cca2);
+            setCallingCode(country.callingCode[0]);
+          }}
+        />
+
         <TextInput
           placeholder="Enter a phone number"
           style={styles.phoneInput}
           keyboardType="phone-pad"
+          value={phone}
+          onChangeText={setPhone}
         />
       </View>
-
-      <View style={styles.buttonRow}>
-        <TouchableOpacity style={styles.backButton}>
-          <Text style={styles.backText}>← BACK</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.nextButton}>
-          <Text style={styles.buttonText}>NEXT →</Text>
-        </TouchableOpacity>
-      </View>
-
-      <Text style={styles.footer}>
-        Terms of Service · Privacy Policy · Deletion Instruction
-      </Text>
     </ScrollView>
   );
 }
@@ -66,7 +64,6 @@ const styles = StyleSheet.create({
   },
   title: { fontSize: 28, fontWeight: "700" },
   subtitle: { fontSize: 16, color: "#777", marginBottom: 20 },
-  loginRow: { flexDirection: "row", marginBottom: 25 },
   loginLink: { color: "#2B6CB0", fontWeight: "600" },
   label: { fontSize: 16, marginBottom: 8 },
   input: {

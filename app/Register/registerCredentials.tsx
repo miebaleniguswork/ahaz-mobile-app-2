@@ -1,36 +1,26 @@
 import React, { useState } from "react";
 import {
-    Image,
-    ScrollView,
-    StyleSheet,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
 } from "react-native";
 
 interface Props {
   data: any;
   updateData: (data: any) => void;
-  nextStep: () => void;
-  prevStep: () => void;
 }
 
 export default function RegisterCredentials({
   data,
   updateData,
-  nextStep,
-  prevStep,
 }: Props) {
   const [isPasswordVisible, setPasswordVisible] = useState<boolean>(false);
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Image
-        source={require("../assets/images/ahaz-logo.png")}
-        style={styles.logo}
-      />
-      <Text style={styles.title}>Create Your Account</Text>
       <Text style={styles.subtitle}>Setup your login credentials</Text>
 
       <Text style={styles.label}>Username</Text>
@@ -53,15 +43,6 @@ export default function RegisterCredentials({
           onPress={() => setPasswordVisible(!isPasswordVisible)}
         >
           <Text style={styles.eyeIcon}>{isPasswordVisible ? "👁️" : "👁️‍🗨️"}</Text>
-        </TouchableOpacity>
-      </View>
-
-      <View style={styles.buttonRow}>
-        <TouchableOpacity style={styles.backButton} onPress={prevStep}>
-          <Text style={styles.buttonText}>← BACK</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.submitButton} onPress={nextStep}>
-          <Text style={styles.buttonText}>SUBMIT</Text>
         </TouchableOpacity>
       </View>
     </ScrollView>

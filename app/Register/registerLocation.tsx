@@ -1,34 +1,14 @@
 import React from "react";
-import {
-    Image,
-    ScrollView,
-    StyleSheet,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View,
-} from "react-native";
+import { ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
 
 interface Props {
   data: any;
   updateData: (data: any) => void;
-  nextStep: () => void;
-  prevStep: () => void;
 }
 
-export default function RegisterLocation({
-  data,
-  updateData,
-  nextStep,
-  prevStep,
-}: Props) {
+export default function RegisterLocation({ data, updateData }: Props) {
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Image
-        source={require("../assets/images/ahaz-logo.png")}
-        style={styles.logo}
-      />
-      <Text style={styles.title}>Create Your Account</Text>
       <Text style={styles.subtitle}>Info regarding your location</Text>
 
       <Text style={styles.label}>Which city are you from?</Text>
@@ -43,15 +23,6 @@ export default function RegisterLocation({
       <View style={styles.dropdown}>
         <Text style={styles.dropText}>No I am not</Text>
         <Text style={styles.arrow}>▼</Text>
-      </View>
-
-      <View style={styles.buttonRow}>
-        <TouchableOpacity style={styles.backButton} onPress={prevStep}>
-          <Text style={styles.buttonText}>← BACK</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.nextButton} onPress={nextStep}>
-          <Text style={styles.buttonText}>NEXT →</Text>
-        </TouchableOpacity>
       </View>
     </ScrollView>
   );

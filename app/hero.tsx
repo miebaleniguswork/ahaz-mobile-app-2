@@ -11,6 +11,12 @@ import {
 
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
+
+import RegistrationFlow from "./Register/registerFlow";
+
+export  function RegisterPage() {
+  return <RegistrationFlow />;
+}
 const { height } = Dimensions.get("window");
 
 const Hero = () => {
@@ -34,7 +40,7 @@ const Hero = () => {
           <View style={styles.buttonContainer}>
             <TouchableOpacity
               style={styles.filledButton}
-              onPress={() => router.push("./register")}
+              onPress={() => router.push("/Register/registerFlow")}
             >
               <Text style={styles.filledButtonText}>Create Account </Text>
             </TouchableOpacity>

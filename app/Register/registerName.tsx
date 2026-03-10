@@ -1,36 +1,23 @@
 import React from "react";
-import {
-  Image,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { View, Text, TextInput, StyleSheet } from "react-native";
 
-interface Props {
-  data: any;
-  updateData: (data: any) => void;
-  nextStep: () => void;
+type FormData = {
+  firstName: string
+  lastName: string
+  location: string
+  username: string
+  password: string
 }
 
-export default function RegisterName({ data, updateData, nextStep }: Props) {
-  return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <Image
-        source={require("../assets/images/ahaz-logo.png")}
-        style={styles.logo}
-      />
-      <Text style={styles.title}>Create Your Account</Text>
-      <Text style={styles.subtitle}>Welcome, enter your name</Text>
+interface Props {
+  data: FormData
+  updateData: (data: Partial<FormData>) => void
+}
 
-      <View style={styles.loginRow}>
-        <Text style={styles.loginText}>Already have an account?</Text>
-        <TouchableOpacity>
-          <Text style={styles.loginLink}> LOGIN</Text>
-        </TouchableOpacity>
-      </View>
+export default function RegisterName({ data, updateData }: Props) {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.subtitle}>Welcome, enter your name</Text>
 
       <Text style={styles.label}>First name</Text>
       <TextInput
@@ -47,38 +34,24 @@ export default function RegisterName({ data, updateData, nextStep }: Props) {
         value={data.lastName}
         onChangeText={(text) => updateData({ lastName: text })}
       />
-
-      <TouchableOpacity style={styles.button} onPress={nextStep}>
-        <Text style={styles.buttonText}>NEXT →</Text>
-      </TouchableOpacity>
-
-      <Text style={styles.footer}>
-        Terms of Service · Privacy Policy · Deletion Instruction
-      </Text>
-    </ScrollView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flexGrow: 1,
-    backgroundColor: "#fff",
-    padding: 25,
-    paddingTop: 60,
+    marginTop: 20
   },
-  logo: {
-    width: 200,
-    height: 100,
-    resizeMode: "contain",
-    alignSelf: "center",
-    marginBottom: 20,
+  subtitle: {
+    fontSize: 16,
+    color: "#777",
+    marginBottom: 25
   },
-  title: { fontSize: 28, fontWeight: "700" },
-  subtitle: { fontSize: 16, color: "#777", marginBottom: 20 },
-  loginRow: { flexDirection: "row", marginBottom: 30, alignItems: "center" },
-  loginText: { fontSize: 16 },
-  loginLink: { color: "#2B6CB0", fontWeight: "600" },
-  label: { fontSize: 16, marginBottom: 8, fontWeight: "500" },
+  label: {
+    fontSize: 16,
+    marginBottom: 8,
+    fontWeight: "500"
+  },
   input: {
     borderWidth: 1,
     borderColor: "#ddd",
@@ -86,21 +59,6 @@ const styles = StyleSheet.create({
     height: 55,
     paddingHorizontal: 15,
     fontSize: 16,
-    marginBottom: 20,
-  },
-  button: {
-    backgroundColor: "#1E8E14",
-    height: 55,
-    justifyContent: "center",
-    alignItems: "center",
-    borderRadius: 8,
-    marginTop: 10,
-  },
-  buttonText: { color: "white", fontSize: 18, fontWeight: "700" },
-  footer: {
-    textAlign: "center",
-    color: "#1E8E14",
-    marginTop: 40,
-    fontSize: 12,
-  },
+    marginBottom: 20
+  }
 });
