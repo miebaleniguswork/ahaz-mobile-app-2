@@ -1,17 +1,30 @@
 import React, { useState } from "react";
-import { ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
+import { StyleSheet, Text, TextInput, View } from "react-native";
 import CountryPicker, {
   Country,
   CountryCode,
 } from "react-native-country-picker-modal";
 
-export default function RegisterContact() {
+type FormData = {
+  firstName: string;
+  lastName: string;
+  location: string;
+  username: string;
+  password: string;
+};
+
+interface Props {
+  data: FormData;
+  updateData: (data: Partial<FormData>) => void;
+}
+
+export default function RegisterContact({}: Props) {
   const [countryCode, setCountryCode] = useState<CountryCode>("ET");
   const [callingCode, setCallingCode] = useState<string>("251");
   const [phone, setPhone] = useState("");
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
+    <View style={styles.container}>
       <Text style={styles.label}>Email</Text>
       <TextInput
         placeholder="Enter valid email address"
@@ -42,7 +55,7 @@ export default function RegisterContact() {
           onChangeText={setPhone}
         />
       </View>
-    </ScrollView>
+    </View>
   );
 }
 
