@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Animated, { FadeInUp } from "react-native-reanimated";
 
 const packages = [
@@ -75,10 +75,7 @@ const packages = [
     id: "6",
     name: "Freemium",
     subtitle: "Free",
-    features: [
-      "Upgrade discounts",
-      "Limited course previews",
-    ],
+    features: ["Upgrade discounts", "Limited course previews"],
     color: "#1a29c7",
     filled: false,
   },
@@ -109,12 +106,14 @@ const Packages = () => {
             <TouchableOpacity
               style={[
                 styles.button,
+                { borderColor: item.color },
                 item.filled && { backgroundColor: item.color },
               ]}
             >
               <Text
                 style={[
                   styles.buttonText,
+                  { color: item.color },
                   item.filled && { color: "#fff" },
                 ]}
               >

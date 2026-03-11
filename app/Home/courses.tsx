@@ -13,7 +13,7 @@ const PopularCourses = () => {
       {/* Course Card */}
       <View style={styles.card}>
         <Image
-          source={require("../assets/images/ahaz-hero.png")}
+          source={require("../../assets/images/ahaz-hero.png")}
           style={styles.courseImage}
         />
 
@@ -36,7 +36,7 @@ const PopularCourses = () => {
 
           <View style={styles.instructorRow}>
             <Image
-              source={require("../assets/images/ahaz-hero.png")}
+              source={require("../../assets/images/ahaz-hero.png")}
               style={styles.instructorAvatar}
             />
             <Text style={styles.instructorName}>Asmelash Girmay</Text>

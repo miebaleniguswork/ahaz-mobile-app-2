@@ -13,7 +13,7 @@ export default function Index() {
 
       await SplashScreen.hideAsync();
 
-      router.replace("/home");
+      router.replace("/Home/home");
     };
 
     prepare();

@@ -4,7 +4,7 @@ import CountryPicker, {
   Country,
   CountryCode,
 } from "react-native-country-picker-modal";
-import type { FormData, FormErrors } from "./_types";
+import type { FormData, FormErrors } from "../../../types/_types";
 
 interface Props {
   data: FormData;

@@ -9,7 +9,7 @@ import {
 } from "react-native";
 
 import { router } from "expo-router";
-import RegistrationFlow from "./Auth/Register/registerFlow";
+import RegistrationFlow from "../Auth/Register/registerFlow";
 
 export function RegisterPage() {
   return <RegistrationFlow />;
@@ -37,7 +37,7 @@ const Hero = () => {
   return (
     <View style={[styles.container, { paddingTop: 0 }]}>
       <ImageBackground
-        source={require("../assets/images/ahaz-hero.png")}
+        source={require("../../assets/images/ahaz-hero.png")}
         style={styles.background}
         resizeMode="cover"
       >
@@ -86,7 +86,7 @@ const Hero = () => {
 
 const styles = StyleSheet.create({
   sample: {
-    borderBottomColor: 'green',
+    borderBottomColor: "green",
     borderTopWidth: 2,
     borderBottomWidth: 2,
     borderLeftWidth: 2,
@@ -99,7 +99,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 35,
   },
 
-  
   container: {
     height: 650, // Increased height for a longer hero section
     width: "100%",
@@ -150,7 +149,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
   },
   filledButton: {
-    borderBlockColor:"#28a745",
+    borderBlockColor: "#28a745",
     borderWidth: 1,
     paddingVertical: 14,
     paddingHorizontal: 35,
@@ -168,13 +167,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 35,
     borderRadius: 30,
   },
-  
+
   loginButton: {
-    backgroundColor:"#28a745",
+    backgroundColor: "#28a745",
     paddingVertical: 14,
     paddingHorizontal: 35,
     borderRadius: 30,
-   
   },
   createButtonText: {
     color: "#FFFFFF",
@@ -182,7 +180,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
   },
   loginButtonText: {
-    color:"#FFFFFF",
+    color: "#FFFFFF",
     fontWeight: "bold",
     fontSize: 15,
   },

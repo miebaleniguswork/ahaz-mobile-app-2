@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, TextInput, View } from "react-native";
-import type { FormData, FormErrors } from "./_types";
+import type { FormData, FormErrors } from "../../../types/_types";
 
 interface Props {
   data: FormData;
@@ -9,9 +9,6 @@ interface Props {
 }
 
 export default function RegisterName({ data, updateData, errors }: Props) {
-
- 
-
   return (
     <View style={styles.container}>
       <Text style={styles.subtitle}>Welcome, enter your name</Text>
@@ -23,7 +20,9 @@ export default function RegisterName({ data, updateData, errors }: Props) {
         value={data.firstName}
         onChangeText={(text) => updateData({ firstName: text })}
       />
-      {!!errors?.firstName && <Text style={styles.error}>{errors.firstName}</Text>}
+      {!!errors?.firstName && (
+        <Text style={styles.error}>{errors.firstName}</Text>
+      )}
 
       <Text style={styles.label}>Last name</Text>
       <TextInput
@@ -32,7 +31,9 @@ export default function RegisterName({ data, updateData, errors }: Props) {
         value={data.lastName}
         onChangeText={(text) => updateData({ lastName: text })}
       />
-      {!!errors?.lastName && <Text style={styles.error}>{errors.lastName}</Text>}
+      {!!errors?.lastName && (
+        <Text style={styles.error}>{errors.lastName}</Text>
+      )}
     </View>
   );
 }

@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import type { FormData, FormErrors } from "./_types";
+import type { FormData, FormErrors } from "../../../types/_types";
 
 interface Props {
   data: FormData;
@@ -42,7 +42,7 @@ export default function RegisterMore({ data, updateData, errors }: Props) {
       "July",
       "August",
     ],
-    []
+    [],
   );
 
   const days = useMemo(() => {
@@ -65,17 +65,26 @@ export default function RegisterMore({ data, updateData, errors }: Props) {
       <Text style={styles.label}>Birthdate</Text>
 
       <View style={styles.dropdownRow}>
-        <TouchableOpacity style={styles.dropdown} onPress={() => setOpen("year")}>
+        <TouchableOpacity
+          style={styles.dropdown}
+          onPress={() => setOpen("year")}
+        >
           <Text style={styles.dropdownText}>{data.birthYear || "Year"}</Text>
           <Text style={styles.arrow}>▼</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.dropdown} onPress={() => setOpen("month")}>
+        <TouchableOpacity
+          style={styles.dropdown}
+          onPress={() => setOpen("month")}
+        >
           <Text style={styles.dropdownText}>{data.birthMonth || "Month"}</Text>
           <Text style={styles.arrow}>▼</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.dropdown} onPress={() => setOpen("day")}>
+        <TouchableOpacity
+          style={styles.dropdown}
+          onPress={() => setOpen("day")}
+        >
           <Text style={styles.dropdownText}>{data.birthDay || "Day"}</Text>
           <Text style={styles.arrow}>▼</Text>
         </TouchableOpacity>

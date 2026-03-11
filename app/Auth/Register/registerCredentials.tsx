@@ -1,3 +1,4 @@
+import { Ionicons } from "@expo/vector-icons";
 import React, { useState } from "react";
 import {
   StyleSheet,
@@ -6,7 +7,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import type { FormData, FormErrors } from "./_types";
+import type { FormData, FormErrors } from "../../../types/_types";
 
 interface Props {
   data: FormData;
@@ -21,6 +22,10 @@ export default function RegisterCredentials({
 }: Props) {
   const [isPasswordVisible, setPasswordVisible] = useState<boolean>(false);
 
+  const handlePasswordChange = (text: string) => {
+    updateData({ password: text });
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.subtitle}>Setup your login credentials</Text>
@@ -32,7 +37,14 @@ export default function RegisterCredentials({
         onChangeText={(text) => updateData({ username: text })}
         autoCapitalize="none"
       />
-      {!!errors?.username && <Text style={styles.error}>{errors.username}</Text>}
+
+      {data.username.length > 0 && data.username.length < 2 && (
+        <Text style={styles.error}>Username must be at least 2 characters</Text>
+      )}
+
+      {!!errors?.username && (
+        <Text style={styles.error}>{errors.username}</Text>
+      )}
 
       <Text style={styles.label}>Password</Text>
       <View style={styles.passwordContainer}>
@@ -40,15 +52,26 @@ export default function RegisterCredentials({
           style={styles.passInput}
           secureTextEntry={!isPasswordVisible}
           value={data.password}
-          onChangeText={(text) => updateData({ password: text })}
+          onChangeText={handlePasswordChange}
         />
         <TouchableOpacity
           onPress={() => setPasswordVisible(!isPasswordVisible)}
         >
-          <Text style={styles.eyeIcon}>{isPasswordVisible ? "👁️" : "👁️‍🗨️"}</Text>
+          <Ionicons
+            name={isPasswordVisible ? "eye-outline" : "eye-off-outline"}
+            size={22}
+            color="#777"
+          />
         </TouchableOpacity>
       </View>
-      {!!errors?.password && <Text style={styles.error}>{errors.password}</Text>}
+
+      {data.password.length > 0 && data.password.length < 8 && (
+        <Text style={styles.error}>Password must be at least 8 characters</Text>
+      )}
+
+      {!!errors?.password && (
+        <Text style={styles.error}>{errors.password}</Text>
+      )}
     </View>
   );
 }

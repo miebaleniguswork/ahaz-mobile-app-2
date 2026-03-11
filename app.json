@@ -15,7 +15,7 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/ahaz-icon.png",
-        "backgroundImage": "#ffffff",
+        "backgroundImage": "white",
         "monochromeImage": "./assets/images/ahaz-icon.png"
       },
       "edgeToEdgeEnabled": true,

@@ -1,14 +1,21 @@
+import {
+  Image,
+  Linking,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
-import { View , Text, StyleSheet, Image, TouchableOpacity, Linking } from "react-native";
-
-
-import React from 'react';
-import { FontAwesome5 } from '@expo/vector-icons';
+import { FontAwesome5 } from "@expo/vector-icons";
+import React from "react";
 
 const Footer = () => {
   // Helper function to handle links (emails, phones, websites)
   const handlePress = (url: string) => {
-    Linking.openURL(url).catch((err) => console.error("Couldn't load page", err));
+    Linking.openURL(url).catch((err) =>
+      console.error("Couldn't load page", err),
+    );
   };
 
   return (
@@ -16,28 +23,33 @@ const Footer = () => {
       <View style={styles.container}>
         {/* Logo */}
         <Image
-          source={{ uri: 'https://via.placeholder.com/150x40?text=Ahazawi+Logo' }} // Replace with your actual local or remote image asset
+          source={require("../assets/images/ahaz-logo.png")}
           style={styles.logo}
+          resizeMode="contain"
         />
 
         {/* Description */}
         <Text style={styles.description}>
-          Ahaz is more than just a digital learning platform; its a space where learners can grow their skills and connect with like-minded professionals to shape their careers.
+          Ahaz is more than just a digital learning platform; its a space where
+          learners can grow their skills and connect with like-minded
+          professionals to shape their careers.
         </Text>
 
         {/* Contact Section */}
         <Text style={styles.sectionTitle}>Contact</Text>
-        
+
         <View style={styles.contactRow}>
           <Text style={styles.contactLabel}>Phone: </Text>
-          <TouchableOpacity onPress={() => handlePress('tel:+251978680000')}>
+          <TouchableOpacity onPress={() => handlePress("tel:+251978680000")}>
             <Text style={styles.contactValue}>+251 978 68 00 00</Text>
           </TouchableOpacity>
         </View>
-        
+
         <View style={styles.contactRow}>
           <Text style={styles.contactLabel}>Email: </Text>
-          <TouchableOpacity onPress={() => handlePress('mailto:info@ahazawi.com')}>
+          <TouchableOpacity
+            onPress={() => handlePress("mailto:info@ahazawi.com")}
+          >
             <Text style={styles.contactValue}>info@ahazawi.com</Text>
           </TouchableOpacity>
         </View>
@@ -77,8 +89,7 @@ const Footer = () => {
       {/* Copyright Bar */}
       <View style={styles.copyrightBar}>
         <Text style={styles.copyrightText}>
-          <Text style={styles.copyrightBold}>Ahaz Platforms </Text>
-          © 2026.
+          <Text style={styles.copyrightBold}>Ahaz Platforms </Text>© 2026.
         </Text>
       </View>
     </View>
@@ -87,7 +98,7 @@ const Footer = () => {
 
 const styles = StyleSheet.create({
   wrapper: {
-    backgroundColor: '#fafafa', // Light off-white background
+    backgroundColor: "#fafafa", // Light off-white background
   },
   container: {
     paddingHorizontal: 20,
@@ -97,37 +108,37 @@ const styles = StyleSheet.create({
   logo: {
     width: 160,
     height: 45,
-    resizeMode: 'contain',
+    resizeMode: "contain",
     marginBottom: 20,
   },
   description: {
     fontSize: 15,
-    color: '#555',
+    color: "#555",
     lineHeight: 24,
     marginBottom: 30,
   },
   sectionTitle: {
     fontSize: 16,
-    fontWeight: 'bold',
-    color: '#333',
+    fontWeight: "bold",
+    color: "#333",
     marginBottom: 15,
   },
   contactRow: {
-    flexDirection: 'row',
+    flexDirection: "row",
     marginBottom: 8,
   },
   contactLabel: {
     fontSize: 15,
-    fontWeight: '700',
-    color: '#333',
+    fontWeight: "700",
+    color: "#333",
   },
   contactValue: {
     fontSize: 15,
-    color: '#28a745', // Green color from the design
+    color: "#28a745", // Green color from the design
   },
   socialContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    justifyContent: "space-between",
     marginTop: 20,
     marginBottom: 35,
   },
@@ -136,28 +147,28 @@ const styles = StyleSheet.create({
     height: 40,
     borderRadius: 20,
     borderWidth: 1,
-    borderColor: '#ddd',
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#fff',
+    borderColor: "#ddd",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#fff",
   },
   addressText: {
     fontSize: 15,
-    color: '#555',
+    color: "#555",
     lineHeight: 26,
   },
   copyrightBar: {
-    backgroundColor: '#f1f1f1', // Slightly darker grey for the very bottom
+    backgroundColor: "#f1f1f1", // Slightly darker grey for the very bottom
     paddingVertical: 20,
-    alignItems: 'center',
+    alignItems: "center",
   },
   copyrightText: {
     fontSize: 14,
-    color: '#555',
+    color: "#555",
   },
   copyrightBold: {
-    fontWeight: 'bold',
-    color: '#333',
+    fontWeight: "bold",
+    color: "#333",
   },
 });
 

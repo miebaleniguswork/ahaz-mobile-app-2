@@ -9,7 +9,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import type { FormData, FormErrors } from "./_types";
+import type { FormData, FormErrors } from "../../../types/_types";
 
 interface Props {
   data: FormData;
@@ -30,7 +30,7 @@ export default function RegisterLocation({ data, updateData, errors }: Props) {
       "IDP from other part of Tigray",
       "Displaced from other regions",
     ],
-    []
+    [],
   );
 
   return (
@@ -44,7 +44,9 @@ export default function RegisterLocation({ data, updateData, errors }: Props) {
         value={data.location}
         onChangeText={(text) => updateData({ location: text })}
       />
-      {!!errors?.location && <Text style={styles.error}>{errors.location}</Text>}
+      {!!errors?.location && (
+        <Text style={styles.error}>{errors.location}</Text>
+      )}
 
       <Text style={styles.label}>Are you displaced from your home?</Text>
       <TouchableOpacity style={styles.dropdown} onPress={() => setOpen(true)}>
