@@ -1,66 +1,81 @@
+import { Ionicons } from '@expo/vector-icons';
 import React from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
-import { Ionicons } from '@expo/vector-icons'; // Standard for checkmark icons
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { SharedValue } from 'react-native-reanimated';
+import Reveal from '../components/Reveal';
 
-const Description = () => {
+type Props = {
+  revealProgress: SharedValue<number>;
+};
+
+const Description = ({ revealProgress }: Props) => {
   return (
     <View style={styles.container}>
-      {/* Hero Image Section */}
-      <Image 
-        source={require('../assets/images/ahaz-team.png')} 
-        style={styles.heroImage}
-        resizeMode="cover"
-      />
+
+      {/* IMAGE */}
+      <Reveal progress={revealProgress} delay={0}>
+        <Image 
+          source={require('../assets/images/ahaz-team.png')} 
+          style={styles.heroImage}
+          resizeMode="cover"
+        />
+      </Reveal>
 
       <View style={styles.content}>
-        {/* Main Title */}
-        <Text style={styles.title}>
-          Ahazawi: a Digital Learning Platform for Everyone
-        </Text>
 
-        {/* Sub-headline */}
-        <Text style={styles.subtitle}>
-          We bridge the gap in education. Learn from anywhere anytime.
-        </Text>
+        {/* TITLE */}
+        <Reveal progress={revealProgress} delay={0.1}>
+          <Text style={styles.title}>
+            Ahazawi: a Digital Learning Platform for Everyone
+          </Text>
+        </Reveal>
 
-        {/* Feature List */}
-        <View style={styles.featureList}>
-          <View style={styles.featureItem}>
-            <Ionicons name="checkmark-circle-outline" size={24} color="#28a745" />
-            <Text style={styles.featureText}>
-              Explore a vast library of self-paced courses and set your own learning schedule.
-            </Text>
+        {/* SUBTITLE */}
+        <Reveal progress={revealProgress} delay={0.2}>
+          <Text style={styles.subtitle}>
+            We bridge the gap in education. Learn from anywhere anytime.
+          </Text>
+        </Reveal>
+
+        {/* FEATURES */}
+        <Reveal progress={revealProgress} delay={0.3}>
+          <View style={styles.featureList}>
+            <View style={styles.featureItem}>
+              <Ionicons name="checkmark-circle-outline" size={24} color="#28a745" />
+              <Text style={styles.featureText}>
+                Explore a vast library of self-paced courses and set your own learning schedule.
+              </Text>
+            </View>
+
+            <View style={styles.featureItem}>
+              <Ionicons name="checkmark-circle-outline" size={24} color="#28a745" />
+              <Text style={styles.featureText}>
+                Choose from independent study, interactive online classes with teachers.
+              </Text>
+            </View>
+
+            <View style={styles.featureItem}>
+              <Ionicons name="checkmark-circle-outline" size={24} color="#28a745" />
+              <Text style={styles.featureText}>
+                Earn recognized certifications through standardized exams.
+              </Text>
+            </View>
           </View>
+        </Reveal>
 
-          <View style={styles.featureItem}>
-            <Ionicons name="checkmark-circle-outline" size={24} color="#28a745" />
-            <Text style={styles.featureText}>
-              Choose from independent study, interactive online classes with teachers, or a blend of both.
-            </Text>
-          </View>
+        {/* BUTTON */}
+        <Reveal progress={revealProgress} delay={0.45}>
+          <TouchableOpacity style={styles.button} activeOpacity={0.8}>
+            <Text style={styles.buttonText}>Read More</Text>
+            <Ionicons name="arrow-forward" size={18} color="#fff" style={styles.buttonIcon} />
+          </TouchableOpacity>
+        </Reveal>
 
-          <View style={styles.featureItem}>
-            <Ionicons name="checkmark-circle-outline" size={24} color="#28a745" />
-            <Text style={styles.featureText}>
-              Earn recognized certifications through standardized exams to showcase your knowledge.
-            </Text>
-          </View>
-        </View>
-
-        {/* Closing Statement */}
-        <Text style={styles.closingText}>
-          Start, learn, connect, and thrive with Ahazawi, your gateway to your brighter future.
-        </Text>
-
-        {/* CTA Button */}
-        <TouchableOpacity style={styles.button} activeOpacity={0.8}>
-          <Text style={styles.buttonText}>Read More</Text>
-          <Ionicons name="arrow-forward" size={18} color="#fff" style={styles.buttonIcon} />
-        </TouchableOpacity>
       </View>
     </View>
   );
 };
+
 
 const styles = StyleSheet.create({
   container: {
@@ -70,7 +85,7 @@ const styles = StyleSheet.create({
   },
   heroImage: {
     width: '100%',
-    height: 250, // Adjust based on your preference
+    height: 250,
   },
   content: {
     padding: 20,
@@ -101,7 +116,7 @@ const styles = StyleSheet.create({
     color: '#444',
     lineHeight: 22,
     marginLeft: 10,
-    flex: 1, // Ensures text wraps correctly next to the icon
+    flex: 1,
   },
   closingText: {
     fontSize: 16,
@@ -110,14 +125,14 @@ const styles = StyleSheet.create({
     marginBottom: 25,
   },
   button: {
-    backgroundColor: '#15b01a', // The specific green from your button
+    backgroundColor: '#15b01a',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     paddingVertical: 12,
     paddingHorizontal: 25,
     borderRadius: 25,
-    alignSelf: 'flex-start', // Keeps button size to content
+    alignSelf: 'flex-start',
   },
   buttonText: {
     color: '#fff',

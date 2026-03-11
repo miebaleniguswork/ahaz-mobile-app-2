@@ -1,20 +1,17 @@
 import React from "react";
-import { View, Text, TextInput, StyleSheet } from "react-native";
-
-type FormData = {
-  firstName: string
-  lastName: string
-  location: string
-  username: string
-  password: string
-}
+import { StyleSheet, Text, TextInput, View } from "react-native";
+import type { FormData, FormErrors } from "./_types";
 
 interface Props {
-  data: FormData
-  updateData: (data: Partial<FormData>) => void
+  data: FormData;
+  updateData: (data: Partial<FormData>) => void;
+  errors?: FormErrors;
 }
 
-export default function RegisterName({ data, updateData }: Props) {
+export default function RegisterName({ data, updateData, errors }: Props) {
+
+ 
+
   return (
     <View style={styles.container}>
       <Text style={styles.subtitle}>Welcome, enter your name</Text>
@@ -26,6 +23,7 @@ export default function RegisterName({ data, updateData }: Props) {
         value={data.firstName}
         onChangeText={(text) => updateData({ firstName: text })}
       />
+      {!!errors?.firstName && <Text style={styles.error}>{errors.firstName}</Text>}
 
       <Text style={styles.label}>Last name</Text>
       <TextInput
@@ -34,23 +32,24 @@ export default function RegisterName({ data, updateData }: Props) {
         value={data.lastName}
         onChangeText={(text) => updateData({ lastName: text })}
       />
+      {!!errors?.lastName && <Text style={styles.error}>{errors.lastName}</Text>}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 20
+    marginTop: 20,
   },
   subtitle: {
     fontSize: 16,
     color: "#777",
-    marginBottom: 25
+    marginBottom: 25,
   },
   label: {
     fontSize: 16,
     marginBottom: 8,
-    fontWeight: "500"
+    fontWeight: "500",
   },
   input: {
     borderWidth: 1,
@@ -59,6 +58,11 @@ const styles = StyleSheet.create({
     height: 55,
     paddingHorizontal: 15,
     fontSize: 16,
-    marginBottom: 20
-  }
+    marginBottom: 8,
+  },
+  error: {
+    color: "#D14343",
+    marginBottom: 12,
+    fontSize: 13,
+  },
 });

@@ -1,6 +1,6 @@
-import { router } from "expo-router";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import {
+  Animated,
   ImageBackground,
   StyleSheet,
   Text,
@@ -8,6 +8,7 @@ import {
   View,
 } from "react-native";
 
+import { router } from "expo-router";
 import RegistrationFlow from "./Register/registerFlow";
 
 export function RegisterPage() {
@@ -15,6 +16,24 @@ export function RegisterPage() {
 }
 
 const Hero = () => {
+  const slideAnim = useRef(new Animated.Value(40)).current;
+  const opacityAnim = useRef(new Animated.Value(0)).current;
+
+  useEffect(() => {
+    Animated.parallel([
+      Animated.timing(slideAnim, {
+        toValue: 0,
+        duration: 600,
+        useNativeDriver: true,
+      }),
+      Animated.timing(opacityAnim, {
+        toValue: 1,
+        duration: 600,
+        useNativeDriver: true,
+      }),
+    ]).start();
+  }, [slideAnim, opacityAnim]);
+
   return (
     <View style={[styles.container, { paddingTop: 0 }]}>
       <ImageBackground
@@ -22,7 +41,15 @@ const Hero = () => {
         style={styles.background}
         resizeMode="cover"
       >
-        <View style={styles.overlay}>
+        <Animated.View
+          style={[
+            styles.overlay,
+            {
+              opacity: opacityAnim,
+              transform: [{ translateY: slideAnim }],
+            },
+          ]}
+        >
           <Text style={styles.title}>
             Bridge the gap,{"\n"}Learn from anywhere,{"\n"}anytime
           </Text>
@@ -30,27 +57,49 @@ const Hero = () => {
             Learn & connect at Ahazawi, a gateway to a brighter future.
           </Text>
           <View style={styles.buttonContainer}>
-            <TouchableOpacity
-              style={styles.filledButton}
+            {/* <TouchableOpacity
+              style={styles.createButton}
               onPress={() => router.push("/Register/registerFlow")}
             >
-              <Text style={styles.filledButtonText}>Create Account </Text>
+              <Text style={styles.createButtonText}>Create  Account </Text>
+            </TouchableOpacity> */}
+
+            <TouchableOpacity
+              style={styles.sample}
+              onPress={() => router.push("/Register/registerFlow")}
+            >
+              <Text style={styles.createButtonText}>Create  Account </Text>
             </TouchableOpacity>
 
             <TouchableOpacity
-              style={styles.filledButton}
+              style={styles.loginButton}
               onPress={() => router.push("./login")}
             >
-              <Text style={styles.filledButtonText}>Login</Text>
+              <Text style={styles.loginButtonText}>Login</Text>
             </TouchableOpacity>
           </View>
-        </View>
+        </Animated.View>
       </ImageBackground>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  sample: {
+    borderBottomColor: 'green',
+    borderTopWidth: 2,
+    borderBottomWidth: 2,
+    borderLeftWidth: 2,
+    borderRightWidth: 2,
+    borderColor: "#28a745",
+    borderRadius: 20,
+    // paddingTop: 20,
+    // paddingLeft: 20,
+    paddingVertical: 14,
+    paddingHorizontal: 35,
+  },
+
+  
   container: {
     height: 650, // Increased height for a longer hero section
     width: "100%",
@@ -85,6 +134,7 @@ const styles = StyleSheet.create({
   buttonContainer: {
     flexDirection: "row",
     alignItems: "center",
+    gap: 12,
   },
   outlineButton: {
     borderWidth: 1.5,
@@ -100,13 +150,39 @@ const styles = StyleSheet.create({
     fontSize: 15,
   },
   filledButton: {
-    backgroundColor: "#28a745",
+    borderBlockColor:"#28a745",
+    borderWidth: 1,
     paddingVertical: 14,
     paddingHorizontal: 35,
     borderRadius: 30,
   },
-  filledButtonText: {
+
+  createButton: {
+    borderTopWidth: 2,
+    borderBottomWidth: 2,
+    borderLeftWidth: 2,
+    borderRightWidth: 2,
+    borderColor: "#28a745",
+    backgroundColor: "rgba(255,255,255,0.05)",
+    paddingVertical: 14,
+    paddingHorizontal: 35,
+    borderRadius: 30,
+  },
+  
+  loginButton: {
+    backgroundColor:"#28a745",
+    paddingVertical: 14,
+    paddingHorizontal: 35,
+    borderRadius: 30,
+   
+  },
+  createButtonText: {
     color: "#FFFFFF",
+    fontWeight: "bold",
+    fontSize: 15,
+  },
+  loginButtonText: {
+    color:"#FFFFFF",
     fontWeight: "bold",
     fontSize: 15,
   },

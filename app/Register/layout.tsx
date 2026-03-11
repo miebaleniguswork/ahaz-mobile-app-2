@@ -5,6 +5,8 @@ import {
   Text,
   TouchableOpacity,
   View,
+  KeyboardAvoidingView,
+  Platform,
 } from "react-native";
 
 interface Props {
@@ -25,28 +27,35 @@ export default function RegisterLayout({
   prevStep,
 }: Props) {
   return (
-    <View style={styles.container}>
-      <Image
-        source={require("../../assets/images/ahaz-logo.png")}
-        style={styles.logo}
-      />
+    <KeyboardAvoidingView
+      style={styles.container}
+      behavior={Platform.OS === "ios" ? "padding" : undefined}
+    >
+      {/* Top Section */}
+      <View style={styles.topArea}>
+        <Image
+          source={require("../../assets/images/ahaz-logo.png")}
+          style={styles.logo}
+        />
 
-      <View style={styles.loginRow}>
-        <Text style={styles.loginText}>Already have an account?</Text>
-        <TouchableOpacity>
-          <Text style={styles.loginLink}> LOGIN</Text>
-        </TouchableOpacity>
+        <View style={styles.loginRow}>
+          <Text style={styles.loginText}>Already have an account ?</Text>
+          <TouchableOpacity>
+            <Text style={styles.loginLink}> LOGIN</Text>
+          </TouchableOpacity>
+        </View>
+
+        <Text style={styles.title}>Create Your Account</Text>
+
+        <View style={styles.stepRow}>
+          <Text style={styles.subtitle}>{title}</Text>
+          <Text style={styles.stepText}>
+            {step}/{totalSteps}
+          </Text>
+        </View>
       </View>
 
-      <Text style={styles.title}>Create Your Account</Text>
-
-      <View style={styles.stepRow}>
-        <Text style={styles.subtitle}>{title}</Text>
-        <Text style={styles.stepText}>
-          {step}/{totalSteps}
-        </Text>
-      </View>
-
+      {/* Scrollable Form */}
       <ScrollView
         style={styles.formScroll}
         contentContainerStyle={styles.formContent}
@@ -56,24 +65,34 @@ export default function RegisterLayout({
         {children}
       </ScrollView>
 
-      <View style={styles.bottomArea}>
+      {/* Buttons */}
+      <View style={styles.buttonContainer}>
         <View style={styles.buttonRow}>
           {prevStep && (
             <TouchableOpacity style={styles.backButton} onPress={prevStep}>
-              <Text style={styles.backText}>Back</Text>
+              <View style={styles.buttonInner}>
+                <Text style={styles.buttonIcon}>←</Text>
+                <Text style={styles.buttonText}>BACK</Text>
+              </View>
             </TouchableOpacity>
           )}
 
           <TouchableOpacity style={styles.nextButton} onPress={nextStep}>
-            <Text style={styles.buttonText}>Next</Text>
+            <View style={styles.buttonInner}>
+              <Text style={styles.buttonText}>NEXT</Text>
+              <Text style={styles.buttonIcon}>→</Text>
+            </View>
           </TouchableOpacity>
         </View>
+      </View>
 
+      {/* Footer */}
+      <View style={styles.footerContainer}>
         <Text style={styles.footer}>
-          Terms of Service • Privacy Policy • Deletion Instructions
+          Terms of Service  • Privacy Policy • Deletion Instructions
         </Text>
       </View>
-    </View>
+    </KeyboardAvoidingView>
   );
 }
 
@@ -82,6 +101,9 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     padding: 25,
+  },
+
+  topArea: {
     paddingTop: 60,
   },
 
@@ -139,51 +161,66 @@ const styles = StyleSheet.create({
   },
 
   formContent: {
-    flexGrow: 1,
+    paddingBottom: 20,
   },
 
-  bottomArea: {
-    paddingTop: 10,
+  buttonContainer: {
+    // marginTop: 10,
+    marginBottom: 50,
   },
 
   buttonRow: {
     flexDirection: "row",
     justifyContent: "space-between",
-    marginTop: 30,
   },
 
   backButton: {
     backgroundColor: "#888",
-    width: "45%",
-    height: 50,
+    width: "44%",
+    height: 44,
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: 8,
+    borderRadius: 2,
   },
 
   nextButton: {
     backgroundColor: "#1E8E14",
-    width: "45%",
-    height: 50,
+    width: "44%",
+    height: 44,
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: 8,
+    borderRadius: 2,
+  },
+
+  buttonInner: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 8,
+    paddingHorizontal: 14,
   },
 
   buttonText: {
-    color: "white",
+    color: "#fff",
     fontWeight: "700",
+    fontSize: 13,
+    letterSpacing: 0.5,
   },
 
-  backText: {
-    color: "white",
+  buttonIcon: {
+    color: "#fff",
     fontWeight: "700",
+    fontSize: 14,
+  },
+
+  footerContainer: {
+    alignItems: "center",
+    paddingBottom: 5,
   },
 
   footer: {
-    textAlign: "center",
     color: "#1E8E14",
-    marginTop: 20,
     fontSize: 12,
+    textAlign: "center",
   },
 });
