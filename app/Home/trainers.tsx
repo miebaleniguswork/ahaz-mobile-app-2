@@ -2,15 +2,44 @@ import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 
 const Trainers = () => {
+
+
   const trainerData = [
     {
       id: '1',
       name: 'Asmelash Girmay',
       role: 'Digitalization and Cybersecurity',
       bio: "A lecturer at MIT, Ethiopia, holds BSc and MSC degrees from MIT and KTH respectively. He's a digitalization and cybersecurity expert with 12 years of software development experience. Asm also founded Ahaz Platforms.",
-      image: require('../assets/images/ahaz-hero.png'),
+      image: require('../../assets/images/trainer_asmelash.avif'),
     },
-    // You can add the others (Bruk Kiros, Tesfay Tareke) here
+    {
+      id: '2',
+      name: 'Tedros Seyfu',
+      role: 'Brand Development',
+      bio: "A branding expert specializing in identity branding, brand guidelines, graphic design, social media marketing, and storytelling. He not only works on branding projects but also provides training in these areas.",
+      image: require('../../assets/images/trainer_tedros.avif'),
+    },
+    {
+      id: '3',
+      name: 'Teklay Gereziher',
+      role: 'Software Development',
+      bio: "A software developer with a BSc from MIT, Ethiopia, has experience in creating software systems. He offers simple software development training online and in person for interns and learners.",
+      image: require('../../assets/images/trainer_teklay.avif'),
+    },
+    {
+      id: '4',
+      name: 'Bruk Kiros',
+      role: 'Surveillance Systems',
+      bio: "A civil engineering graduate from Debremarkos University, is a surveillance system expert. With experience in installing security cameras for organizations like UNICEF, he also provides training for surveillance systems.",
+      image: require('../../assets/images/trainer_bruk.avif'),
+    },
+    {
+      id: '5',
+      name: 'Tesfay Tareke',
+      role: 'Philosophy and Cyberethics',
+      bio: "A philosophy lecturer at Mekelle University, with BA and MA degrees from Addis Ababa University. Specializing in ethics, including cyberethics, Tesfu brings a rich understanding of social sciences to teaching and educational programs.",
+      image: require('../../assets/images/trainer_tesfay.avif'),
+    },
   ];
 
   return (

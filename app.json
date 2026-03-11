@@ -4,25 +4,19 @@
     "slug": "ahaz-mobile-app-2",
     "version": "1.0.0",
     "orientation": "portrait",
-    // "icon": "./assets/images/icon.png",
+  
     "icon": "./assets/images/ahaz-icon.png",
     "scheme": "ahazmobileapp2",
     "userInterfaceStyle": "automatic",
   "newArchEnabled": true,
-    "ios": {
+  "ios": {
       "supportsTablet": true
     },
     "android": {
-      // "adaptiveIcon": {
-      //   // briefly understand what these are in accord to the images in assets
-      //   // "backgroundColor": "#E6F4FE",
-      //   // "foregroundImage": "./assets/images/android-icon-foreground.png",
-      //   "foregroundImage": "./assets/images/ahaz-logo.png",
-      //   // "backgroundImage": "./assets/images/android-icon-background.png",
-      //   "backgroundImage": "./assets/images/ahaz-logo.png",
-      //   // "monochromeImage": "./assets/images/android-icon-monochrome.png"
-      //   "monochromeImage": "./assets/images/ahaz-logo.png"
-      // },
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/ahaz-icon.png",
+        "monochromeImage": "./assets/images/ahaz-icon.png"
+      },
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false,
       "package": "com.miebale.ahazmobileapp2"
@@ -33,10 +27,10 @@
     },
     "plugins": [
       "expo-router",
+      "expo-image-picker",
       [
         "expo-splash-screen",
         {
-          // "image": "./assets/images/splash-icon.png",
           "image": "./assets/images/ahaz-icon.png",
           "imageWidth": 200,
           "resizeMode": "contain",

@@ -1,58 +1,59 @@
-import { ScrollView, StatusBar, StyleSheet } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import CourseCategories from './categories';
-import PopularCourses from './courses';
-import Description from './description';
-import Footer from './footer';
-import Hero from './hero';
-import TopBar from './TopBar';
-import Trainers from './trainers';
+import React, { useEffect } from "react";
+import { View, Image, StyleSheet, ActivityIndicator, Text } from "react-native";
+import * as SplashScreen from "expo-splash-screen";
+import { router } from "expo-router";
 
-const Home = () => {
+SplashScreen.preventAutoHideAsync();
+
+export default function Index() {
+
+  useEffect(() => {
+    const prepare = async () => {
+      await new Promise(resolve => setTimeout(resolve, 2000));
+
+      await SplashScreen.hideAsync();
+
+      router.replace("/Home/home");
+    };
+
+    prepare();
+  }, []);
+
   return (
-    <SafeAreaView edges={['top']} style={styles.screen}>
-      <StatusBar barStyle="dark-content" backgroundColor="#fff" />
+    <View style={styles.container}>
+      
+      <Image
+        source={require("../assets/images/ahaz-logo.png")}
+        style={styles.logo}
+        resizeMode="contain"
+      />
 
-      <TopBar />
+      <ActivityIndicator size="large" color="#ffffff" />
 
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={styles.scrollContainer}
-      >
-        <Hero />
-        <Description />
-        <CourseCategories />
-        <PopularCourses />
-        <Trainers />
-        <Footer />
-      </ScrollView>
-    </SafeAreaView>
+      <Text style={styles.footer}>Made by Ahaz</Text>
+
+    </View>
   );
 }
 
-// const styles = StyleSheet.create({
-//   screen: {
-//     flex: 1,
-//     backgroundColor: '#fff',
-//   },
-//   scrollContainer: {
-//     flexGrow: 1,
-//     // If your TopBar is 60px high and absolute, 
-//     // you might need pt: 60 here if Hero doesn't handle it
-//   }
-// });
-
-
 const styles = StyleSheet.create({
-  screen: {
+  container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#000",
+    alignItems: "center",
+    justifyContent: "center",
   },
 
-  scrollContainer: {
-    flexGrow: 1,
-    paddingTop: 80
-  }
-})
+  logo: {
+    width: 200,
+    height: 200,
+    marginBottom: 30,
+  },
 
-export default Home;
+  footer: {
+    position: "absolute",
+    bottom: 40,
+    color: "#fff",
+    fontSize: 14,
+  },
+});

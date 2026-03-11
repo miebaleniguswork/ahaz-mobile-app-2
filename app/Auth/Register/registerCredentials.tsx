@@ -1,26 +1,33 @@
+import { Ionicons } from "@expo/vector-icons";
 import React, { useState } from "react";
 import {
-  ScrollView,
   StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
   View,
 } from "react-native";
+import type { FormData, FormErrors } from "../../../types/_types";
 
 interface Props {
-  data: any;
-  updateData: (data: any) => void;
+  data: FormData;
+  updateData: (data: Partial<FormData>) => void;
+  errors?: FormErrors;
 }
 
 export default function RegisterCredentials({
   data,
   updateData,
+  errors,
 }: Props) {
   const [isPasswordVisible, setPasswordVisible] = useState<boolean>(false);
 
+  const handlePasswordChange = (text: string) => {
+    updateData({ password: text });
+  };
+
   return (
-    <ScrollView contentContainerStyle={styles.container}>
+    <View style={styles.container}>
       <Text style={styles.subtitle}>Setup your login credentials</Text>
 
       <Text style={styles.label}>Username</Text>
@@ -31,30 +38,47 @@ export default function RegisterCredentials({
         autoCapitalize="none"
       />
 
+      {data.username.length > 0 && data.username.length < 2 && (
+        <Text style={styles.error}>Username must be at least 2 characters</Text>
+      )}
+
+      {!!errors?.username && (
+        <Text style={styles.error}>{errors.username}</Text>
+      )}
+
       <Text style={styles.label}>Password</Text>
       <View style={styles.passwordContainer}>
         <TextInput
           style={styles.passInput}
           secureTextEntry={!isPasswordVisible}
           value={data.password}
-          onChangeText={(text) => updateData({ password: text })}
+          onChangeText={handlePasswordChange}
         />
         <TouchableOpacity
           onPress={() => setPasswordVisible(!isPasswordVisible)}
         >
-          <Text style={styles.eyeIcon}>{isPasswordVisible ? "👁️" : "👁️‍🗨️"}</Text>
+          <Ionicons
+            name={isPasswordVisible ? "eye-outline" : "eye-off-outline"}
+            size={22}
+            color="#777"
+          />
         </TouchableOpacity>
       </View>
-    </ScrollView>
+
+      {data.password.length > 0 && data.password.length < 8 && (
+        <Text style={styles.error}>Password must be at least 8 characters</Text>
+      )}
+
+      {!!errors?.password && (
+        <Text style={styles.error}>{errors.password}</Text>
+      )}
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flexGrow: 1,
-    backgroundColor: "#fff",
-    padding: 25,
-    paddingTop: 60,
+    marginTop: 20,
   },
   logo: {
     width: 180,
@@ -72,7 +96,12 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     height: 50,
     paddingHorizontal: 15,
-    marginBottom: 20,
+    marginBottom: 8,
+  },
+  error: {
+    color: "#D14343",
+    marginBottom: 12,
+    fontSize: 13,
   },
   passwordContainer: {
     flexDirection: "row",
@@ -82,7 +111,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     height: 50,
     paddingHorizontal: 15,
-    marginBottom: 40,
+    marginBottom: 8,
   },
   passInput: { flex: 1 },
   eyeIcon: { fontSize: 18 },
