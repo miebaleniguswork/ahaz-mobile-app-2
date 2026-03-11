@@ -15,7 +15,6 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/ahaz-icon.png",
-        "backgroundImage": "white",
         "monochromeImage": "./assets/images/ahaz-icon.png"
       },
       "edgeToEdgeEnabled": true,
@@ -28,6 +27,7 @@
     },
     "plugins": [
       "expo-router",
+      "expo-image-picker",
       [
         "expo-splash-screen",
         {
