@@ -34,7 +34,7 @@ export default function RegisterLayout({
       {/* Top Section */}
       <View style={styles.topArea}>
         <Image
-          source={require("../../assets/images/ahaz-logo.png")}
+          source={require("../../../assets/images/ahaz-logo.png")}
           style={styles.logo}
         />
 

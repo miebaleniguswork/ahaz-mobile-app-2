@@ -1,142 +1,59 @@
-import React, { useState } from "react";
-import { StatusBar, StyleSheet, useWindowDimensions } from "react-native";
-import Animated, { SharedValue, interpolate, useAnimatedScrollHandler, useAnimatedStyle, useSharedValue } from "react-native-reanimated";
-import { SafeAreaView } from 'react-native-safe-area-context';
-import CourseCategories from "./categories";
-import PopularCourses from "./courses";
-import Description from "./description";
-import Footer from "./footer";
-import Hero from "./hero";
-import Packages from "./packages";
-import TopBar from "./TopBar";
-import Trainers from "./trainers";
+import React, { useEffect } from "react";
+import { View, Image, StyleSheet, ActivityIndicator, Text } from "react-native";
+import * as SplashScreen from "expo-splash-screen";
+import { router } from "expo-router";
 
-type RevealProgress = SharedValue<number>;
-const CourseCategoriesTyped =
-  CourseCategories as unknown as React.ComponentType<{
-    revealProgress?: RevealProgress;
-  }>;
+SplashScreen.preventAutoHideAsync();
 
-const AnimatedSection = ({
-  children,
-  scrollY,
-  windowHeight,
-}: {
-  children: React.ReactNode | ((progress: SharedValue<number>) => React.ReactNode);
-  scrollY: SharedValue<number>;
-  windowHeight: number;
-}) => {
-  const [layoutY, setLayoutY] = useState<number | null>(null);
+export default function Index() {
 
-  const progress = useSharedValue(0);
+  useEffect(() => {
+    const prepare = async () => {
+      await new Promise(resolve => setTimeout(resolve, 2000));
 
-  const animatedStyle = useAnimatedStyle(() => {
-    if (layoutY === null) {
-      return {
-        opacity: 0,
-        transform: [{ translateY: 80 }, { scale: 0.9 }],
-      };
-    }
+      await SplashScreen.hideAsync();
 
-    const inputStart = layoutY - windowHeight * 0.8;
-    const inputEnd = layoutY - windowHeight * 0.4;
-
-    const progressValue = interpolate(
-      scrollY.value,
-      [inputStart, inputEnd],
-      [0, 1],
-      "clamp"
-    );
-
-    progress.value = progressValue;
-
-    return {
-      opacity: progressValue,
-      transform: [
-        { translateY: interpolate(progressValue, [0, 1], [80, 0]) },
-        { scale: interpolate(progressValue, [0, 1], [0.9, 1]) },
-      ],
+      router.replace("/home");
     };
-  });
+
+    prepare();
+  }, []);
 
   return (
-    <Animated.View
-      onLayout={(e) => setLayoutY(e.nativeEvent.layout.y)}
-      style={animatedStyle}
-    >
-      {typeof children === "function" ? children(progress) : children}
-    </Animated.View>
-  );
-};
+    <View style={styles.container}>
+      
+      <Image
+        source={require("../assets/images/ahaz-logo.png")}
+        style={styles.logo}
+        resizeMode="contain"
+      />
 
-const Home = () => {
-  const scrollY = useSharedValue(0);
-  const { height: windowHeight } = useWindowDimensions();
+      <ActivityIndicator size="large" color="#ffffff" />
 
-  const scrollHandler = useAnimatedScrollHandler({
-    onScroll: (event) => {
-      scrollY.value = event.contentOffset.y;
-    },
-  });
+      <Text style={styles.footer}>Made by Ahaz</Text>
 
-  return (
-    <SafeAreaView edges={['top']} style={styles.screen}>
-      <StatusBar barStyle="dark-content" backgroundColor="#fff" />
-
-      <TopBar />
-
-      <Animated.ScrollView
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={styles.scrollContainer}
-        scrollEventThrottle={16}
-        onScroll={scrollHandler}
-      >
-        <Hero />
-        <AnimatedSection scrollY={scrollY} windowHeight={windowHeight}>
-          {(progress) => <Description revealProgress={progress} />}
-        </AnimatedSection>
-        <AnimatedSection scrollY={scrollY} windowHeight={windowHeight}>
-          {(progress) => <CourseCategoriesTyped revealProgress={progress} />}
-        </AnimatedSection>
-        <AnimatedSection scrollY={scrollY} windowHeight={windowHeight}>
-          <PopularCourses />
-        </AnimatedSection>
-
-        <AnimatedSection scrollY={scrollY} windowHeight={windowHeight}>
-          <Packages />
-        </AnimatedSection>
-        <AnimatedSection scrollY={scrollY} windowHeight={windowHeight}>
-          <Trainers />
-        </AnimatedSection>
-        <Footer />
-      </Animated.ScrollView>
-    </SafeAreaView>
+    </View>
   );
 }
 
-// const styles = StyleSheet.create({
-//   screen: {
-//     flex: 1,
-//     backgroundColor: '#fff',
-//   },
-//   scrollContainer: {
-//     flexGrow: 1,
-//     // If your TopBar is 60px high and absolute, 
-//     // you might need pt: 60 here if Hero doesn't handle it
-//   }
-// });
-
-
 const styles = StyleSheet.create({
-  screen: {
+  container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#000",
+    alignItems: "center",
+    justifyContent: "center",
   },
 
-  scrollContainer: {
-    flexGrow: 1,
-    paddingTop: 80
-  }
-})
+  logo: {
+    width: 200,
+    height: 200,
+    marginBottom: 30,
+  },
 
-export default Home;
+  footer: {
+    position: "absolute",
+    bottom: 40,
+    color: "#fff",
+    fontSize: 14,
+  },
+});
