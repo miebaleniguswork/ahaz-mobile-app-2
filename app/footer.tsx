@@ -56,27 +56,54 @@ const Footer = () => {
 
         {/* Social Icons */}
         <View style={styles.socialContainer}>
-          <TouchableOpacity style={styles.iconButton}>
-            <FontAwesome5 name="facebook-f" size={16} color="#666" />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.iconButton}>
-            <FontAwesome5 name="linkedin-in" size={16} color="#666" />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.iconButton}>
-            <FontAwesome5 name="github" size={16} color="#666" />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.iconButton}>
-            <FontAwesome5 name="youtube" size={16} color="#666" />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.iconButton}>
-            <FontAwesome5 name="telegram-plane" size={16} color="#666" />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.iconButton}>
-            <FontAwesome5 name="whatsapp" size={16} color="#666" />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.iconButton}>
-            <FontAwesome5 name="tiktok" size={16} color="#666" />
-          </TouchableOpacity>
+          <TouchableOpacity
+  style={styles.iconButton}
+  onPress={() => handlePress("https://www.facebook.com/AhazPlatforms")}
+>
+  <FontAwesome5 name="facebook-f" size={16} color="#666" />
+</TouchableOpacity>
+
+<TouchableOpacity
+  style={styles.iconButton}
+  onPress={() => handlePress("https://linkedin.com/company/AhazPlatforms")}
+>
+  <FontAwesome5 name="linkedin-in" size={16} color="#666" />
+</TouchableOpacity>
+
+<TouchableOpacity
+  style={styles.iconButton}
+  onPress={() => handlePress("https://github.com/AhazPlatforms")}
+>
+  <FontAwesome5 name="github" size={16} color="#666" />
+</TouchableOpacity>
+
+<TouchableOpacity
+  style={styles.iconButton}
+  onPress={() => handlePress("https://youtube.com/@AhazPlatforms")}
+>
+  <FontAwesome5 name="youtube" size={16} color="#666" />
+</TouchableOpacity>
+
+<TouchableOpacity
+  style={styles.iconButton}
+  onPress={() => handlePress("https://t.me/AhazPlatforms")}
+>
+  <FontAwesome5 name="telegram-plane" size={16} color="#666" />
+</TouchableOpacity>
+
+<TouchableOpacity
+  style={styles.iconButton}
+  onPress={() => handlePress("https://wa.me/251978680000")}
+>
+  <FontAwesome5 name="whatsapp" size={16} color="#666" />
+</TouchableOpacity>
+
+<TouchableOpacity
+  style={styles.iconButton}
+  onPress={() => handlePress("https://tiktok.com/@AhazPlatforms")}
+>
+  <FontAwesome5 name="tiktok" size={16} color="#666" />
+</TouchableOpacity>
         </View>
 
         {/* Address Section */}

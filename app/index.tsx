@@ -9,7 +9,7 @@ export default function Index() {
 
   useEffect(() => {
     const prepare = async () => {
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      // await new Promise(resolve => setTimeout(resolve, 2000));
 
       await SplashScreen.hideAsync();
 
