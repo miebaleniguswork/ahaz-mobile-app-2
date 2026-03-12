@@ -84,6 +84,7 @@ const packages = [
 const Packages = () => {
   return (
     <View style={styles.container}>
+      <Text style={styles.title}>popular packages</Text>
       {packages.map((item, index) => (
         <Animated.View
           key={item.id}

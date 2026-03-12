@@ -29,15 +29,14 @@ export default function Login() {
     }
   };
 
-  const handleLogin = () => {
-    if (password.trim() === "") {
-      setPasswordError("Please enter your password");
-    } else {
-      setPasswordError("");
-      console.log("Logging in with:", username, password);
-    }
-  };
-
+const handleLogin = () => {
+  if (password.trim() === "") {
+    setPasswordError("Please enter your password");
+  } else {
+    setPasswordError("");
+    router.replace("/profile"); // go to profile screen
+  }
+};
   return (
     <KeyboardAvoidingView
       style={styles.container}
