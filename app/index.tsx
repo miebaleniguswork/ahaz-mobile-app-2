@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
-import { View, Image, StyleSheet, ActivityIndicator, Text } from "react-native";
-import * as SplashScreen from "expo-splash-screen";
 import { router } from "expo-router";
+import * as SplashScreen from "expo-splash-screen";
+import React, { useEffect } from "react";
+import { ActivityIndicator, Image, StyleSheet, Text, View } from "react-native";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -13,7 +13,7 @@ export default function Index() {
 
       await SplashScreen.hideAsync();
 
-      router.replace("/Home/home");
+      router.replace("/(drawer)/learning");
     };
 
     prepare();

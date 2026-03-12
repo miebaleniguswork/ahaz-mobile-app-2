@@ -1,19 +1,19 @@
 import React, { useEffect, useRef } from "react";
 import {
-  Animated,
-  ImageBackground,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
+    Animated,
+    ImageBackground,
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    View,
 } from "react-native";
 
 import { router } from "expo-router";
-import RegistrationFlow from "../Auth/Register/registerFlow";
+// import RegistrationFlow from "../../app/(auth)/register/registerFlow";
 
-export function RegisterPage() {
-  return <RegistrationFlow />;
-}
+// export function RegisterPage() {
+//   return <RegistrationFlow />;
+// }
 
 const Hero = () => {
   const slideAnim = useRef(new Animated.Value(40)).current;
@@ -66,14 +66,14 @@ const Hero = () => {
 
             <TouchableOpacity
               style={styles.sample}
-              onPress={() => router.push("/Auth/Register/registerFlow")}
+              onPress={() => router.push("/(auth)/register/name")}
             >
               <Text style={styles.createButtonText}>Create Account </Text>
             </TouchableOpacity>
 
             <TouchableOpacity
               style={styles.loginButton}
-              onPress={() => router.push("/Auth/login")}
+              onPress={() => router.push("/(auth)/login")}
             >
               <Text style={styles.loginButtonText}>Login</Text>
             </TouchableOpacity>

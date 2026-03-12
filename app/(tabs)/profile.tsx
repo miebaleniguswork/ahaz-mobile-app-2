@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import AuthenticatedTopbar from "./Auth/AuthenticatedTopbar";
+import AuthenticatedTopbar from "../../components/layout/AuthenticatedTopbar";
 
 export default function Profile() {
   return (
