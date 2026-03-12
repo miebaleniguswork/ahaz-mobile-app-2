@@ -20,40 +20,43 @@ export default function Index() {
   }, []);
 
   return (
-    <View style={styles.container}>
-      
+  <View style={styles.container}>
+    
+    <View style={styles.centerContent}>
       <Image
         source={require("../assets/images/ahaz-logo.png")}
         style={styles.logo}
         resizeMode="contain"
       />
 
-      <ActivityIndicator size="large" color="#ffffff" />
-
-      <Text style={styles.footer}>Made by Ahaz</Text>
-
+      <ActivityIndicator size="large" color="#1E8E14" />
     </View>
-  );
+
+    <Text style={styles.footer}>Made by Ahaz</Text>
+
+  </View>
+);
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#000",
+    backgroundColor: "#ffffff",
     alignItems: "center",
     justifyContent: "center",
   },
 
   logo: {
     width: 200,
-    height: 200,
-    marginBottom: 30,
+    height: 100,
+    // marginBottom: 10,
+    // backgroundColor: "red"
   },
 
   footer: {
     position: "absolute",
-    bottom: 40,
-    color: "#fff",
+    bottom: 60,
+    color: "#1E8E14",
     fontSize: 14,
   },
 });

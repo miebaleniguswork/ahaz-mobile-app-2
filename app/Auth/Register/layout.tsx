@@ -94,7 +94,7 @@ export default function RegisterLayout({
               <Text style={styles.buttonText}>
                 {isSubmitStep ? "SUBMIT" : "NEXT"}
               </Text>
-              <Ionicons name="arrow-forward" size={20} color="#fff" />
+              {/* <Ionicons name="arrow-forward" size={20} color="#fff" /> */}
             </View>
           </TouchableOpacity>
         </View>
