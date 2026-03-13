@@ -19,15 +19,17 @@ import {
 import { Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import Footer from "../footer";
-import TopBar from "../TopBar";
+import AnimatedSection from "../../components/animations/AnimatedSection";
+// import Footer from "../../components/layout/Footer";
+import TopBar from "../../components/layout/TopBar";
 import CourseCategories from "./categories";
 import HeroImage from "./descriptionImage";
 import DescriptionContent from "./descriptionInfo";
 import Hero from "./hero";
 import Packages from "./packages";
 import Trainers from "./trainers";
-import AnimatedSection from "../animatedSection";
+// import Footer from "@/components/layout/footer";
+import Footer from "../../components/layout/Footer"
 
 const categories = [
   { id: "1", name: "Digital Skill", icon: "code-tags", lib: "mc" },

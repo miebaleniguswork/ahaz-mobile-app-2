@@ -54,7 +54,7 @@ export default function ForgotPassword() {
         {/* LOGIN LINK */}
         <View style={styles.loginRow}>
           <Text style={styles.loginText}>Remember your password? </Text>
-          <TouchableOpacity onPress={() => router.push("/Auth/login")}>
+          <TouchableOpacity onPress={() => router.push("/(auth)/login")}>
             <Text style={styles.loginLink}> LOGIN</Text>
           </TouchableOpacity>
         </View>

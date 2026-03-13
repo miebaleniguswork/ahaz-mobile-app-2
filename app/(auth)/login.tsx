@@ -95,7 +95,9 @@ export default function Login() {
             </TouchableOpacity>
 
             <TouchableOpacity
-              onPress={() => router.push("/Auth/passwordForgot")}
+            
+              onPress={() => router.push("/(auth)/passwordForgot")}
+
             >
               <Text style={styles.forgot}>FORGOTTEN PASSWORD?</Text>
             </TouchableOpacity>
@@ -103,7 +105,7 @@ export default function Login() {
             <View style={styles.createRow}>
               <Text style={styles.createText}>Don't have an account?</Text>
               <TouchableOpacity
-                onPress={() => router.push("/Auth/Register/registerFlow")}
+                onPress={() => router.push("/(auth)/register/registerFlow")}
               >
                 <Text style={styles.createLink}> CREATE NEW ACCOUNT</Text>
               </TouchableOpacity>
@@ -146,7 +148,7 @@ export default function Login() {
             </TouchableOpacity>
 
             <TouchableOpacity
-              onPress={() => router.push("/Auth/passwordForgot")}
+              onPress={() => router.push("/(auth)/passwordForgot")}
             >
               <Text style={styles.forgot}>FORGOTTEN PASSWORD?</Text>
             </TouchableOpacity>

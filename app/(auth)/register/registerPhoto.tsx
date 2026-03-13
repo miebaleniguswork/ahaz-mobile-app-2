@@ -12,10 +12,12 @@ import {
   View
 } from "react-native";
 
+import type { FormData, FormErrors } from "../../../types/_types";
+
 type Props = {
-  data: any;
-  updateData: (data: Partial<any>) => void;
-  errors: any;
+  data: FormData;
+  updateData: (data: Partial<FormData>) => void;
+  errors?: FormErrors;
 };
 
 const difficulties = [

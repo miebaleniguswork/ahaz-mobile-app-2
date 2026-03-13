@@ -9,7 +9,7 @@ import {
 } from "react-native";
 
 import { router } from "expo-router";
-import RegistrationFlow from "../Auth/Register/registerFlow";
+import RegistrationFlow from "../(auth)/register/registerFlow";
 
 export function RegisterPage() {
   return <RegistrationFlow />;
@@ -66,14 +66,14 @@ const Hero = () => {
 
             <TouchableOpacity
               style={styles.sample}
-              onPress={() => router.push("/Auth/Register/registerFlow")}
+              onPress={() => router.push("/(auth)/register/registerFlow")}
             >
               <Text style={styles.createButtonText}>Create Account </Text>
             </TouchableOpacity>
 
             <TouchableOpacity
               style={styles.loginButton}
-              onPress={() => router.push("/Auth/login")}
+              onPress={() => router.push("/(auth)/login")}
             >
               <Text style={styles.loginButtonText}>Login</Text>
             </TouchableOpacity>

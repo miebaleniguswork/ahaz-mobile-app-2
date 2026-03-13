@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
-import { View, Image, StyleSheet, ActivityIndicator, Text } from "react-native";
-import * as SplashScreen from "expo-splash-screen";
 import { router } from "expo-router";
+import * as SplashScreen from "expo-splash-screen";
+import React, { useEffect } from "react";
+import { ActivityIndicator, Image, StyleSheet, Text, View } from "react-native";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -42,6 +42,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#ffffff",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+
+  centerContent: {
     alignItems: "center",
     justifyContent: "center",
   },

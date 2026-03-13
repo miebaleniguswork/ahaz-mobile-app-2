@@ -8,6 +8,14 @@ import RegisterMore from "./registerMore";
 import RegisterName from "./registerName";
 import RegisterPhoto from "./registerPhoto";
 
+import type { ComponentType } from "react";
+
+type StepProps = {
+  data: FormData;
+  updateData: (data: Partial<FormData>) => void;
+  errors?: FormErrors;
+};
+
 export default function RegistrationFlow() {
   const [step, setStep] = useState(1);
 
@@ -117,14 +125,14 @@ export default function RegistrationFlow() {
     nextStep();
   };
 
-  const steps = [
-    { component: RegisterName, title: "Your Name" },
-    { component: RegisterContact, title: "Contact Information" },
-    { component: RegisterMore, title: "More about you" },
-    { component: RegisterPhoto, title: "Upload Photo" },
-    { component: RegisterLocation, title: "Your Location" },
-    { component: RegisterCredentials, title: "Account Credentials" },
-  ];
+const steps: { component: ComponentType<StepProps>; title: string }[] = [
+  { component: RegisterName, title: "Your Name" },
+  { component: RegisterContact, title: "Contact Information" },
+  { component: RegisterMore, title: "More about you" },
+  { component: RegisterPhoto, title: "Upload Photo" },
+  { component: RegisterLocation, title: "Your Location" },
+  { component: RegisterCredentials, title: "Account Credentials" },
+];
 
   const currentStep = steps[step - 1] ?? steps[0];
   const StepComponent = currentStep.component;

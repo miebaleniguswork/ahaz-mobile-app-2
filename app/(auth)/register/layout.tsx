@@ -28,18 +28,16 @@ export default function RegisterLayout({
   nextStep,
   prevStep,
 }: Props) {
-  // Automatically detect if this step is "RegisterCredentials" by component type
-  const isSubmitStep = React.Children.toArray(children).some(
-    (child: any) => child?.type?.name === "RegisterCredentials",
-  );
-
   return (
     <KeyboardAvoidingView
       style={styles.container}
-      behavior={Platform.OS === "ios" ? "padding" : undefined}
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
-      {/* Top Section */}
-      <View style={styles.topArea}>
+      <ScrollView
+        contentContainerStyle={styles.content}
+        keyboardShouldPersistTaps="handled"
+        showsVerticalScrollIndicator={false}
+      >
         <Image
           source={require("../../../assets/images/ahaz-logo.png")}
           style={styles.logo}
@@ -60,20 +58,9 @@ export default function RegisterLayout({
             {step}/{totalSteps}
           </Text>
         </View>
-      </View>
 
-      {/* Scrollable Form */}
-      <ScrollView
-        style={styles.formScroll}
-        contentContainerStyle={styles.formContent}
-        showsVerticalScrollIndicator={false}
-        keyboardShouldPersistTaps="handled"
-      >
         {children}
-      </ScrollView>
 
-      {/* Buttons */}
-      <View style={styles.buttonContainer}>
         <View style={styles.buttonRow}>
           {prevStep ? (
             <TouchableOpacity style={styles.backButton} onPress={prevStep}>
@@ -86,102 +73,103 @@ export default function RegisterLayout({
             <View style={{ width: "44%" }} />
           )}
 
-          <TouchableOpacity
-            style={isSubmitStep ? styles.submitButton : styles.nextButton}
-            onPress={nextStep}
-          >
-            <View style={styles.buttonInner}>
-              <Text style={styles.buttonText}>
-                {isSubmitStep ? "SUBMIT" : "NEXT"}
-              </Text>
-              {/* <Ionicons name="arrow-forward" size={20} color="#fff" /> */}
-            </View>
+          <TouchableOpacity style={styles.nextButton} onPress={nextStep}>
+            <Text style={styles.buttonText}>NEXT</Text>
           </TouchableOpacity>
         </View>
-      </View>
 
-      {/* Footer */}
-      <View style={styles.footerContainer}>
         <Text style={styles.footer}>
           Terms of Service • Privacy Policy • Deletion Instructions
         </Text>
-      </View>
+      </ScrollView>
     </KeyboardAvoidingView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#fff", padding: 25 },
-  topArea: { paddingTop: 60 },
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+  },
+
+  content: {
+    paddingHorizontal: 25,
+    paddingTop: 100,
+    paddingBottom: 40,
+  },
+
   logo: {
-    width: 180,
-    height: 80,
+    width: 160,
+    height: 70,
     resizeMode: "contain",
     alignSelf: "center",
-    marginBottom: 20,
+    marginBottom: 15,
   },
+
   loginRow: {
     flexDirection: "row",
     justifyContent: "center",
-    marginBottom: 25,
-    alignItems: "center",
+    marginBottom: 20,
   },
-  loginText: { fontSize: 15, color: "#444", alignItems: "center" },
-  loginLink: { color: "#2B6CB0", fontWeight: "600", alignItems: "center" },
-  title: { fontSize: 28, fontWeight: "700", marginBottom: 10 },
+
+  loginText: { fontSize: 15, color: "#444" },
+
+  loginLink: { color: "#2B6CB0", fontWeight: "600" },
+
+  title: {
+    fontSize: 26,
+    fontWeight: "700",
+    marginBottom: 6,
+  },
+
   stepRow: {
     flexDirection: "row",
     justifyContent: "space-between",
-    marginBottom: 20,
+    marginBottom: 15,
   },
-  subtitle: { fontSize: 16, color: "#777" },
-  stepText: { fontSize: 14, color: "#999" },
-  formScroll: { flex: 1 },
-  formContent: { paddingBottom: 20 },
-  buttonContainer: { marginBottom: 50 },
+
+  subtitle: { fontSize: 15, color: "#777" },
+
+  stepText: { fontSize: 13, color: "#999" },
+
   buttonRow: {
     flexDirection: "row",
     justifyContent: "space-between",
-    marginVertical: 40,
+    marginTop: 30,
   },
+
   backButton: {
     backgroundColor: "#888",
     width: "44%",
     height: 44,
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: 2,
   },
+
   nextButton: {
     backgroundColor: "#1E8E14",
     width: "44%",
     height: 44,
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: 2,
   },
-  submitButton: {
-    backgroundColor: "#1E8E14",
-    width: "44%",
-    height: 44,
-    justifyContent: "center",
-    alignItems: "center",
-    borderRadius: 2,
-  },
+
   buttonInner: {
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "center",
     gap: 8,
-    paddingHorizontal: 14,
   },
+
   buttonText: {
     color: "#fff",
     fontWeight: "700",
     fontSize: 13,
-    letterSpacing: 0.5,
   },
-  buttonIcon: { color: "#fff", fontWeight: "700", fontSize: 14 },
-  footerContainer: { alignItems: "center", paddingBottom: 5 },
-  footer: { color: "#1E8E14", fontSize: 12, textAlign: "center" },
+
+  footer: {
+    color: "#1E8E14",
+    fontSize: 12,
+    textAlign: "center",
+    marginTop: 30,
+  },
 });

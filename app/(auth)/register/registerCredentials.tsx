@@ -20,11 +20,7 @@ export default function RegisterCredentials({
   updateData,
   errors,
 }: Props) {
-  const [isPasswordVisible, setPasswordVisible] = useState<boolean>(false);
-
-  const handlePasswordChange = (text: string) => {
-    updateData({ password: text });
-  };
+  const [showPassword, setShowPassword] = useState(false);
 
   return (
     <View style={styles.container}>
@@ -33,32 +29,42 @@ export default function RegisterCredentials({
       <Text style={styles.label}>Username</Text>
       <TextInput
         style={styles.input}
-        value={data.username}
+        value={data.username ?? ""}
         onChangeText={(text) => updateData({ username: text })}
         autoCapitalize="none"
+        autoCorrect={false}
+        placeholder="Enter username"
+        placeholderTextColor="#999"
       />
 
       {data.username.length > 0 && data.username.length < 2 && (
         <Text style={styles.error}>Username must be at least 2 characters</Text>
       )}
 
-      {!!errors?.username && (
+      {errors?.username ? (
         <Text style={styles.error}>{errors.username}</Text>
-      )}
+      ) : null}
 
       <Text style={styles.label}>Password</Text>
+
       <View style={styles.passwordContainer}>
         <TextInput
           style={styles.passInput}
-          secureTextEntry={!isPasswordVisible}
-          value={data.password}
-          onChangeText={handlePasswordChange}
+          value={data.password ?? ""}
+          onChangeText={(text) => updateData({ password: text })}
+          secureTextEntry={!showPassword}
+          autoCapitalize="none"
+          autoCorrect={false}
+          placeholder="Enter password"
+          placeholderTextColor="#999"
         />
+
         <TouchableOpacity
-          onPress={() => setPasswordVisible(!isPasswordVisible)}
+          onPress={() => setShowPassword((prev) => !prev)}
+          activeOpacity={0.7}
         >
           <Ionicons
-            name={isPasswordVisible ? "eye-outline" : "eye-off-outline"}
+            name={showPassword ? "eye-outline" : "eye-off-outline"}
             size={22}
             color="#777"
           />
@@ -69,9 +75,9 @@ export default function RegisterCredentials({
         <Text style={styles.error}>Password must be at least 8 characters</Text>
       )}
 
-      {!!errors?.password && (
+      {errors?.password ? (
         <Text style={styles.error}>{errors.password}</Text>
-      )}
+      ) : null}
     </View>
   );
 }
@@ -80,16 +86,16 @@ const styles = StyleSheet.create({
   container: {
     marginTop: 20,
   },
-  logo: {
-    width: 180,
-    height: 80,
-    resizeMode: "contain",
-    alignSelf: "center",
-    marginBottom: 20,
+  subtitle: {
+    fontSize: 16,
+    color: "#777",
+    marginBottom: 30,
   },
-  title: { fontSize: 28, fontWeight: "700" },
-  subtitle: { fontSize: 16, color: "#777", marginBottom: 30 },
-  label: { fontSize: 16, marginBottom: 8, fontWeight: "500" },
+  label: {
+    fontSize: 16,
+    marginBottom: 8,
+    fontWeight: "500",
+  },
   input: {
     borderWidth: 1,
     borderColor: "#ddd",
@@ -97,11 +103,8 @@ const styles = StyleSheet.create({
     height: 50,
     paddingHorizontal: 15,
     marginBottom: 8,
-  },
-  error: {
-    color: "#D14343",
-    marginBottom: 12,
-    fontSize: 13,
+    color: "#000",
+    fontSize: 16,
   },
   passwordContainer: {
     flexDirection: "row",
@@ -113,24 +116,14 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     marginBottom: 8,
   },
-  passInput: { flex: 1 },
-  eyeIcon: { fontSize: 18 },
-  buttonRow: { flexDirection: "row", justifyContent: "space-between" },
-  backButton: {
-    backgroundColor: "#888",
-    width: "45%",
-    height: 50,
-    justifyContent: "center",
-    alignItems: "center",
-    borderRadius: 8,
+  passInput: {
+    flex: 1,
+    color: "#000",
+    fontSize: 16,
   },
-  submitButton: {
-    backgroundColor: "#1E8E14",
-    width: "45%",
-    height: 50,
-    justifyContent: "center",
-    alignItems: "center",
-    borderRadius: 8,
+  error: {
+    color: "#D14343",
+    marginBottom: 12,
+    fontSize: 13,
   },
-  buttonText: { color: "white", fontWeight: "700" },
 });

@@ -23,7 +23,7 @@ const Footer = () => {
       <View style={styles.container}>
         {/* Logo */}
         <Image
-          source={require("../assets/images/ahaz-logo.png")}
+          source={require("../../assets/images/ahaz-logo.png")}
           style={styles.logo}
           resizeMode="contain"
         />

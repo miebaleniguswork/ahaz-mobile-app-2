@@ -12,7 +12,9 @@ export type FormData = {
   displacementStatus: string;
   username: string;
   password: string;
-};
+  photo?: string; 
+}
+
 
 export type FormErrors = Partial<Record<keyof FormData, string>>;
 
