@@ -67,7 +67,7 @@ export default function RegisterLayout({
         style={styles.formScroll}
         contentContainerStyle={styles.formContent}
         showsVerticalScrollIndicator={false}
-        keyboardShouldPersistTaps="handled"
+        keyboardShouldPersistTaps="always"
       >
         {children}
       </ScrollView>
