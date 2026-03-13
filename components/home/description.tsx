@@ -2,7 +2,7 @@ import { Ionicons } from "@expo/vector-icons";
 import React from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { SharedValue } from "react-native-reanimated";
-import Reveal from "../../components/Reveal";
+import Reveal from "../Reveal";
 
 type Props = {
   revealProgress: SharedValue<number>;

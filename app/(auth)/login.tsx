@@ -30,13 +30,16 @@ export default function Login() {
   };
 
   const handleLogin = () => {
-    if (password.trim() === "") {
-      setPasswordError("Please enter your password");
-    } else {
-      setPasswordError("");
-      console.log("Logging in with:", username, password);
-    }
-  };
+  if (password.trim() === "") {
+    setPasswordError("Please enter your password");
+  } else {
+    setPasswordError("");
+
+    console.log("Logging in with:", username, password);
+
+    router.replace("/(drawer)/learning");
+  }
+};
 
   return (
     <KeyboardAvoidingView

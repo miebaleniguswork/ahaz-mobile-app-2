@@ -19,17 +19,17 @@ import {
 import { Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import AnimatedSection from "../../components/animations/AnimatedSection";
+import AnimatedSection from "../components/animations/AnimatedSection";
 // import Footer from "../../components/layout/Footer";
-import TopBar from "../../components/layout/TopBar";
-import CourseCategories from "./categories";
-import HeroImage from "./descriptionImage";
-import DescriptionContent from "./descriptionInfo";
-import Hero from "./hero";
-import Packages from "./packages";
-import Trainers from "./trainers";
+import CourseCategories from "../components/home/categories";
+import HeroImage from "../components/home/descriptionImage";
+import DescriptionContent from "../components/home/descriptionInfo";
+import Hero from "../components/home/hero";
+import Packages from "../components/home/packages";
+import Trainers from "../components/home/trainers";
+import TopBar from "../components/layout/TopBar";
 // import Footer from "@/components/layout/footer";
-import Footer from "../../components/layout/Footer"
+import Footer from "../components/layout/Footer";
 
 const categories = [
   { id: "1", name: "Digital Skill", icon: "code-tags", lib: "mc" },

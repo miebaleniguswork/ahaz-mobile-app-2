@@ -9,7 +9,7 @@ import {
 } from "react-native";
 
 import { router } from "expo-router";
-import RegistrationFlow from "../(auth)/register/registerFlow";
+import RegistrationFlow from "../../app/(auth)/register/registerFlow";
 
 export function RegisterPage() {
   return <RegistrationFlow />;
