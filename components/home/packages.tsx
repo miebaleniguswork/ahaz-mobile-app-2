@@ -83,7 +83,13 @@ const packages = [
 
 const Packages = () => {
   return (
+    // packages: explore our plans for the following
     <View style={styles.container}>
+      <View style={styles.headerRow}>
+        <Text style={styles.overhead}>COURSES</Text>
+        <View style={styles.line} />
+      </View>
+      <Text style={styles.mainTitle}>POPULAR COURSES</Text>
       {packages.map((item, index) => (
         <Animated.View
           key={item.id}
@@ -133,6 +139,23 @@ const styles = StyleSheet.create({
   container: {
     padding: 20,
     backgroundColor: "#f6f6f6",
+  },
+
+  headerRow: { flexDirection: "row", alignItems: "center", marginBottom: 5 },
+  overhead: { fontSize: 12, color: "#888", letterSpacing: 1 },
+  line: {
+    flex: 1,
+    height: 1,
+    backgroundColor: "#28a745",
+    marginLeft: 10,
+    opacity: 0.3,
+  },
+
+  mainTitle: {
+    fontSize: 28,
+    fontWeight: "bold",
+    color: "#333",
+    marginBottom: 20,
   },
 
   card: {

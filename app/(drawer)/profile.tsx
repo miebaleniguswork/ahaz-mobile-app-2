@@ -1,3 +1,5 @@
+import DrawerScreenWrapper from "@/components/layout/DrawerScreenWrapper";
+import { FontAwesome6, Ionicons } from "@expo/vector-icons";
 import React, { useState } from "react";
 import {
   Image,
@@ -9,85 +11,137 @@ import {
   View,
 } from "react-native";
 
-import DrawerScreenWrapper from "@/components/layout/DrawerScreenWrapper";
-import { Entypo, Ionicons } from "@expo/vector-icons";
-
 const COLORS = {
-  ahaz600: "#14a814",
-  text: "#444",
-  bg: "#f1f1f1",
+  primary: "#14a814",
+  lightGreen: "#dcfddb",
+  text: "#333",
+  sub: "#777",
+  border: "#e5e5e5",
 };
 
-export default function Learning() {
-  const avatarUri = "https://i.pravatar.cc/100";
-
-  const [liked, setLiked] = useState(false);
-  const [saved, setSaved] = useState(false);
-  const [commented, setCommented] = useState(false);
+export default function Profile() {
+  const cover = "https://images.unsplash.com/photo-1519682337058-a94d519337bc";
+  const avatar = "https://i.pravatar.cc/200";
+  const [activeTab, setActiveTab] = useState("posts");
 
   return (
     <DrawerScreenWrapper>
-      <View style={styles.container}>
-        <ScrollView showsVerticalScrollIndicator={false}>
-          {/* flex:row with left being Courses and right being the filter */}
-          <View style={styles.header}>
-            <Text style={{ fontSize: 20, fontWeight: "bold" }}>Courses</Text>
-            <View style={styles.postBox}>
-              {/* <Image source={{ uri: avatarUri }} style={styles.avatar} /> */}
+      <ScrollView style={styles.container}>
+        {/* COVER */}
+        <View>
+          <Image source={{ uri: cover }} style={styles.cover} />
 
-              <TextInput
-                placeholder="Type to filter"
-                placeholderTextColor="#888"
-                style={styles.input}
-              />
+          {/* PROFILE IMAGE */}
+          <View style={styles.avatarWrapper}>
+            <Image source={{ uri: avatar }} style={styles.avatar} />
 
-              <Ionicons name="options-outline" size={18} color="#999" />
-            </View>
+            <TouchableOpacity style={styles.cameraAvatar}>
+              <Ionicons name="camera" size={16} color="#fff" />
+            </TouchableOpacity>
           </View>
-          <View>{/* Post input */}</View>
 
-          {/* Course card */}
-          <View style={styles.card}>
-            <Image
-              source={{
-                uri: "https://img.freepik.com/free-vector/online-learning-concept_23-2148529106.jpg",
-              }}
-              style={styles.courseImage}
-            />
+          {/* COVER CAMERA */}
+          <TouchableOpacity style={styles.cameraCover}>
+            <Ionicons name="camera" size={16} color="#fff" />
+          </TouchableOpacity>
+        </View>
 
-            <Text style={styles.courseTitle}>Computer Essentials</Text>
-            <View style={styles.courseInfo}>
-              <Text style={styles.courseSub}>Digital Skill</Text>
+        {/* EDIT BUTTON */}
+        <View style={styles.editRow}>
+          <TouchableOpacity style={styles.editBtn}>
+            <Text style={styles.editText}>EDIT PROFILE</Text>
+          </TouchableOpacity>
+        </View>
 
-              <View style={styles.priceTag}>
-                <Text style={styles.priceText}>Br. 699.99</Text>
-              </View>
-            </View>
+        {/* NAME */}
+        <View style={styles.info}>
+          <Text style={styles.name}>Charlie Chaplin</Text>
+          <Text style={styles.username}>@Charlie123</Text>
 
-            <View style={styles.bottomRow}>
-              <TouchableOpacity>
-                <Text style={styles.enroll}>ENROLL</Text>
-              </TouchableOpacity>
-
-              <View style={styles.actions}>
-                {/* LIKE */}
-                <TouchableOpacity onPress={() => setLiked(!liked)}>
-                  <Ionicons
-                    name={liked ? "heart" : "heart-outline"}
-                    size={20}
-                    color={liked ? COLORS.ahaz600 : COLORS.text}
-                  />
-                </TouchableOpacity>
-
-                {/* SHARE (always outline) */}
-                <TouchableOpacity>
-                  <Entypo name="share" size={20} color={COLORS.text} />
-                </TouchableOpacity>
-              </View>
-            </View>
+          <View style={styles.locationRow}>
+            <Ionicons name="location-outline" size={16} color="#777" />
+            <Text style={styles.location}>MEKELLE</Text>
           </View>
-        </ScrollView>
-      </View>
+
+          {/* DETAILS */}
+          <View style={styles.detailsRow}>
+            <Text style={styles.detail}>Born Jun 06, 2000</Text>
+            <Text style={styles.detail}>Joined Dec 31, 2025</Text>
+          </View>
+
+          {/* ORGANIZATION */}
+          <View style={styles.tag}>
+            <View style={styles.addCircle}>
+              <FontAwesome6 name="plus" size={10} color="#fff" />
+            </View>
+            <Text style={styles.tagText}>ORGANIZATION</Text>
+          </View>
+
+          {/* FOLLOW STATS */}
+          <View style={styles.stats}>
+            <Text style={styles.stat}>1 FOLLOWERS</Text>
+            <Text style={styles.dot}>·</Text>
+            <Text style={styles.stat}>0 FOLLOWING</Text>
+            <Text style={styles.dot}>·</Text>
+            <Text style={styles.stat}>0 LIKES</Text>
+          </View>
+        </View>
+
+        {/* POST BOX */}
+        <View style={styles.postBox}>
+          <Image source={{ uri: avatar }} style={styles.postAvatar} />
+          <TextInput
+            style={styles.placeholder}
+            placeholder="Miebale, any tips to share?"
+            placeholderTextColor="#999"
+          />
+        </View>
+
+        {/* TABS */}
+        <View style={styles.tabs}>
+          <TouchableOpacity
+            style={[styles.tab, activeTab === "posts" && styles.activeTab]}
+            onPress={() => setActiveTab("posts")}
+          >
+            <Text
+              style={[
+                styles.tabText,
+                activeTab === "posts" && styles.activeTabText,
+              ]}
+            >
+              POSTS
+            </Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={[styles.tab, activeTab === "media" && styles.activeTab]}
+            onPress={() => setActiveTab("media")}
+          >
+            <Text
+              style={[
+                styles.tabText,
+                activeTab === "media" && styles.activeTabText,
+              ]}
+            >
+              MEDIA
+            </Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={[styles.tab, activeTab === "favorites" && styles.activeTab]}
+            onPress={() => setActiveTab("favorites")}
+          >
+            <Text
+              style={[
+                styles.tabText,
+                activeTab === "favorites" && styles.activeTabText,
+              ]}
+            >
+              FAVORITE POSTS
+            </Text>
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
     </DrawerScreenWrapper>
   );
 }
@@ -95,107 +149,194 @@ export default function Learning() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#f1f1f1",
+    backgroundColor: "#fff",
+    padding: 15,
+  },
+
+  cover: {
+    width: "100%",
+    height: 200,
+  },
+
+  avatarWrapper: {
+    position: "absolute",
+    left: 20,
+    bottom: -40,
+  },
+
+  avatar: {
+    width: 120,
+    height: 120,
+    borderRadius: 60,
+    borderWidth: 4,
+    borderColor: "#fff",
+  },
+
+  cameraAvatar: {
+    position: "absolute",
+    bottom: 0,
+    right: 0,
+    backgroundColor: "#333",
+    borderRadius: 15,
+    padding: 8,
+  },
+
+  cameraCover: {
+    position: "absolute",
+    right: 10,
+    bottom: 10,
+    backgroundColor: "#333",
+    borderRadius: 20,
+    padding: 6,
+  },
+
+  editRow: {
+    alignItems: "flex-end",
+    marginTop: 10,
+    paddingRight: 15,
+  },
+
+  editBtn: {
+    backgroundColor: COLORS.lightGreen,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 6,
+  },
+
+  editText: {
+    color: COLORS.primary,
+    fontWeight: "600",
+  },
+
+  info: {
+    marginTop: 40,
+    paddingHorizontal: 20,
+  },
+
+  name: {
+    fontSize: 30,
+    fontWeight: "700",
+    color: COLORS.text,
+  },
+
+  username: {
+    color: COLORS.sub,
+    marginTop: 2,
+  },
+
+  locationRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginTop: 15,
+  },
+
+  location: {
+    marginLeft: 4,
+    color: COLORS.sub,
+  },
+
+  detailsRow: {
+    flexDirection: "row",
+    marginTop: 10,
+    gap: 15,
+  },
+
+  detail: {
+    color: COLORS.sub,
+    fontSize: 13,
+  },
+
+  tag: {
+    marginTop: 10,
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 4,
+    backgroundColor: "#f5f5f5",
+    borderWidth: 1,
+    borderColor: COLORS.border,
+    alignSelf: "flex-start",
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    borderRadius: 4,
+  },
+
+  tagText: {
+    fontSize: 12,
+    color: COLORS.text,
+    backgroundColor: "#fffffff",
+  },
+
+  stats: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginTop: 10,
+  },
+
+  stat: {
+    fontSize: 15,
+    color: COLORS.sub,
+  },
+
+  dot: {
+    marginHorizontal: 6,
+    color: COLORS.sub,
   },
 
   postBox: {
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "#fff",
-    paddingHorizontal: 10,
-    borderRadius: 6,
-    gap: 10,
-    width: 200,
-    height: 38,
+    borderTopWidth: 1,
+    borderBottomWidth: 1,
+    borderColor: COLORS.border,
+    padding: 12,
+    marginTop: 20,
   },
 
-  avatar: {
-    width: 36,
-    height: 36,
-    borderRadius: 18,
+  postAvatar: {
+    width: 32,
+    height: 32,
+    borderRadius: 16,
+    marginRight: 10,
   },
 
-  input: {
-    flex: 1,
-    backgroundColor: "#f5f5f5",
-    borderRadius: 6,
-    paddingHorizontal: 10,
-    height: 38,
-    color: "#888",
+  placeholder: {
+    color: COLORS.sub,
   },
 
-  card: {
-    backgroundColor: "#fff",
-    marginHorizontal: 12,
-    marginBottom: 12,
-    borderRadius: 6,
-    paddingBottom: 12,
-  },
-
-  courseImage: {
-    width: "100%",
-    height: 140,
-    borderTopLeftRadius: 6,
-    borderTopRightRadius: 6,
-  },
-
-  courseTitle: {
-    fontWeight: "600",
-    marginTop: 10,
-    marginHorizontal: 12,
-  },
-
-  courseSub: {
-    color: "#777",
-    marginHorizontal: 12,
-    marginTop: 2,
-  },
-
-  priceTag: {
-    backgroundColor: "#dcfddb",
-    alignSelf: "flex-start",
-    paddingHorizontal: 8,
-    paddingVertical: 4,
-    borderRadius: 4,
-    marginLeft: 12,
-    marginTop: 6,
-  },
-
-  priceText: {
-    color: "#138214",
-    fontSize: 12,
-  },
-
-  bottomRow: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginTop: 40,
-    paddingHorizontal: 12,
-  },
-
-  enroll: {
-    color: "#14a814",
-    fontWeight: "600",
-  },
-
-  actions: {
-    flexDirection: "row",
-    gap: 16,
-  },
-
-  courseInfo: {
-    // marginTop: 20,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
-  header: {
+  tabs: {
     flexDirection: "row",
     justifyContent: "space-around",
+    paddingVertical: 14,
+    borderBottomWidth: 1,
+    borderColor: COLORS.border,
+  },
+
+  tab: {
+    paddingVertical: 4,
+  },
+
+  tabText: {
+    color: COLORS.sub,
+    fontWeight: "500",
+  },
+
+  activeTab: {
+    borderBottomWidth: 2,
+    borderColor: COLORS.primary,
+    paddingBottom: 4,
+  },
+
+  activeTabText: {
+    color: COLORS.primary,
+  },
+
+  addCircle: {
+    width: 18,
+    height: 18,
+    borderRadius: 9,
+    backgroundColor: "#042f06",
     alignItems: "center",
-    marginHorizontal: 12,
-    marginTop: 20,
-    padding:12
+    justifyContent: "center",
+    marginRight: 5,
   },
 });
