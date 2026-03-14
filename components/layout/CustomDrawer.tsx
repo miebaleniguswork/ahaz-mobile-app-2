@@ -1,16 +1,19 @@
-import {
-    DrawerContentScrollView,
-    DrawerItem,
-} from "@react-navigation/drawer";
+import { DrawerContentScrollView, DrawerItem } from "@react-navigation/drawer";
 import React from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
 
-import { Feather, Ionicons, MaterialIcons } from "@expo/vector-icons";
+import {
+  Entypo,
+  Ionicons,
+  MaterialCommunityIcons,
+  MaterialIcons,
+} from "@expo/vector-icons";
 
 export default function CustomDrawer(props: any) {
+  const activeRoute = props.state.routeNames[props.state.index];
+
   return (
     <DrawerContentScrollView {...props}>
-
       {/* Logo */}
       <View style={styles.logoContainer}>
         <Image
@@ -18,7 +21,6 @@ export default function CustomDrawer(props: any) {
           style={styles.logo}
         />
       </View>
-
       {/* Profile */}
       <View style={styles.profile}>
         <Image
@@ -27,65 +29,113 @@ export default function CustomDrawer(props: any) {
         />
         <Text style={styles.username}>Miebale Nigus</Text>
       </View>
-
       {/* Drawer Items */}
-
       <DrawerItem
         label="Social"
-        icon={({ color, size }) => (
-          <Ionicons name="people-outline" size={size} color={color} />
+        labelStyle={{
+          color: activeRoute === "social" ? "#14a814" : "#777",
+        }}
+        icon={({ size }) => (
+          <Ionicons
+            name="people-outline"
+            size={size}
+            color={activeRoute === "social" ? "#14a814" : "#777"}
+          />
         )}
+        style={activeRoute === "social" ? styles.activeItem : styles.item}
         onPress={() => props.navigation.navigate("social")}
       />
 
       <DrawerItem
         label="Learning"
-        icon={({ color, size }) => (
-          <Ionicons name="school-outline" size={size} color={color} />
+        labelStyle={{
+          color: activeRoute === "learning" ? "#14a814" : "#777",
+        }}
+        icon={({ size }) => (
+          <MaterialIcons
+            name="workspace-premium"
+            size={size}
+            color={activeRoute === "learning" ? "#14a814" : "#777"}
+          />
         )}
+        style={activeRoute === "learning" ? styles.activeItem : styles.item}
         onPress={() => props.navigation.navigate("learning")}
       />
-
       <DrawerItem
         label="Jobs"
-        icon={({ color, size }) => (
-          <Ionicons name="briefcase-outline" size={size} color={color} />
+        labelStyle={{
+          color: activeRoute === "jobs" ? "#14a814" : "#777",
+        }}
+        icon={({ size }) => (
+          <Ionicons
+            name="briefcase-outline"
+            size={size}
+            color={activeRoute === "jobs" ? "#14a814" : "#777"}
+          />
         )}
-        onPress={() => {}}
+        style={activeRoute === "jobs" ? styles.activeItem : styles.item}
+        onPress={() => props.navigation.navigate("jobs")}
       />
-
       <DrawerItem
         label="CV Builder"
-        icon={({ color, size }) => (
-          <MaterialIcons name="layers" size={size} color={color} />
+        labelStyle={{
+          color: activeRoute === "cvbuilder" ? "#14a814" : "#777",
+        }}
+        icon={({ size }) => (
+          <MaterialIcons
+            name="layers"
+            size={size}
+            color={activeRoute === "cvbuilder" ? "#14a814" : "#777"}
+          />
         )}
+        style={activeRoute === "cvbuilder" ? styles.activeItem : styles.item}
         onPress={() => props.navigation.navigate("cvbuilder")}
       />
-
       <DrawerItem
         label="Messages"
-        icon={({ color, size }) => (
-          <Ionicons name="chatbubble-outline" size={size} color={color} />
+        labelStyle={{
+          color: activeRoute === "messages" ? "#14a814" : "#777",
+        }}
+        icon={({ size }) => (
+          <MaterialCommunityIcons
+            name="message"
+            size={size}
+            color={activeRoute === "messages" ? "#14a814" : "#777"}
+          />
         )}
+        style={activeRoute === "messages" ? styles.activeItem : styles.item}
         onPress={() => props.navigation.navigate("messages")}
       />
-
       <DrawerItem
         label="Feedback"
-        icon={({ color, size }) => (
-          <Feather name="message-square" size={size} color={color} />
+        labelStyle={{
+          color: activeRoute === "feedback" ? "#14a814" : "#777",
+        }}
+        icon={({ size }) => (
+          <Entypo
+            name="reply"
+            size={size}
+            color={activeRoute === "feedback" ? "#14a814" : "#777"}
+          />
         )}
+        style={activeRoute === "feedback" ? styles.activeItem : styles.item}
         onPress={() => props.navigation.navigate("feedback")}
       />
-
       <DrawerItem
         label="Packages"
-        icon={({ color, size }) => (
-          <Ionicons name="pricetag-outline" size={size} color={color} />
+        labelStyle={{
+          color: activeRoute === "packages" ? "#14a814" : "#777",
+        }}
+        icon={({ size }) => (
+          <MaterialCommunityIcons
+            name="crown"
+            size={size}
+            color={activeRoute === "packages" ? "#14a814" : "#777"}
+          />
         )}
+        style={activeRoute === "packages" ? styles.activeItem : styles.item}
         onPress={() => props.navigation.navigate("packages")}
       />
-
       {/* Footer */}
       <Text style={styles.footer}>Ahaz Platforms © 2026.</Text>
     </DrawerContentScrollView>
@@ -93,29 +143,28 @@ export default function CustomDrawer(props: any) {
 }
 
 const styles = StyleSheet.create({
-//   logoContainer: {
-//     // flexDirection: "row",
-//     alignItems: "center",
-//     padding: 10,
-//   },
+  //   logoContainer: {
+  //     // flexDirection: "row",
+  //     alignItems: "center",
+  //     padding: 10,
+  //   },
 
-//   logo: {
-//     width: 100,
-//     height: 100,
-//     // marginRight: 8,
-//   },
+  //   logo: {
+  //     width: 100,
+  //     height: 100,
+  //     // marginRight: 8,
+  //   },
 
-logoContainer: {
-  alignItems: "center",
-  paddingVertical: 20,
-},
+  logoContainer: {
+    alignItems: "center",
+    paddingTop: 10,
+  },
 
-logo: {
-  height: 50,
-  resizeMode: "contain",
-},
+  logo: {
+    height: 40,
+    resizeMode: "contain",
+  },
 
-  
   profile: {
     flexDirection: "row",
     alignItems: "center",
@@ -135,9 +184,31 @@ logo: {
   },
 
   footer: {
-    marginTop: 20,
+    marginTop: 200,
     padding: 16,
     color: "#777",
-    fontSize: 12,
+    fontSize: 20,
+  },
+
+  // item: {
+  //   borderRightWidth: 6,
+  //   borderRightColor: "transparent",
+  // },
+
+  // activeItem: {
+  //   borderRightColor: "#14a814",
+  // },
+
+  item: {
+    borderRightWidth: 6,
+    borderRightColor: "transparent",
+    borderRadius: 0,
+  },
+
+  activeItem: {
+    borderRightWidth: 6,
+    borderRightColor: "#14a814",
+    backgroundColor: "#f1fdf0",
+    borderRadius: 0,
   },
 });

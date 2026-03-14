@@ -50,7 +50,7 @@ export default function ForgotPassword() {
             style={styles.logo}
           />
         </View>
-        
+
         {/* LOGIN LINK */}
         <View style={styles.loginRow}>
           <Text style={styles.loginText}>Remember your password? </Text>
@@ -61,7 +61,6 @@ export default function ForgotPassword() {
 
         {/* TITLE */}
         <Text style={styles.title}>Account Recovery</Text>
-
 
         {/* DESCRIPTION */}
         <Text style={styles.subtitle}>
@@ -178,7 +177,7 @@ const styles = StyleSheet.create({
   },
 
   button: {
-    backgroundColor: "#1E8E14",
+    backgroundColor: "#14a814",
     height: 45,
     justifyContent: "center",
     alignItems: "center",

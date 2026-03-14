@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
   nextButton: {
-    backgroundColor: "#1E8E14",
+    backgroundColor: "#14a814",
     width: "45%",
     height: 50,
     justifyContent: "center",
@@ -132,7 +132,7 @@ const styles = StyleSheet.create({
   backText: { color: "white", fontWeight: "700" },
   footer: {
     textAlign: "center",
-    color: "#1E8E14",
+    color: "#14a814",
     marginTop: 40,
     fontSize: 12,
   },

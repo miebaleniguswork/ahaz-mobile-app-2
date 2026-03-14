@@ -6,10 +6,9 @@ import { ActivityIndicator, Image, StyleSheet, Text, View } from "react-native";
 SplashScreen.preventAutoHideAsync();
 
 export default function Index() {
-
   useEffect(() => {
     const prepare = async () => {
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      await new Promise((resolve) => setTimeout(resolve, 2000));
 
       await SplashScreen.hideAsync();
 
@@ -20,22 +19,20 @@ export default function Index() {
   }, []);
 
   return (
-  <View style={styles.container}>
-    
-    <View style={styles.centerContent}>
-      <Image
-        source={require("../assets/images/ahaz-logo.png")}
-        style={styles.logo}
-        resizeMode="contain"
-      />
+    <View style={styles.container}>
+      <View style={styles.centerContent}>
+        <Image
+          source={require("../assets/images/ahaz-logo.png")}
+          style={styles.logo}
+          resizeMode="contain"
+        />
 
-      <ActivityIndicator size="large" color="#1E8E14" />
+        <ActivityIndicator size="large" color="#14a814" />
+      </View>
+
+      <Text style={styles.footer}>Made by Ahaz</Text>
     </View>
-
-    <Text style={styles.footer}>Made by Ahaz</Text>
-
-  </View>
-);
+  );
 }
 
 const styles = StyleSheet.create({
@@ -61,7 +58,7 @@ const styles = StyleSheet.create({
   footer: {
     position: "absolute",
     bottom: 60,
-    color: "#1E8E14",
+    color: "#14a814",
     fontSize: 14,
   },
 });

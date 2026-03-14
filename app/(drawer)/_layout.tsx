@@ -38,12 +38,13 @@ export default function Layout() {
       screenOptions={{ headerShown: false }}
       drawerContent={(props) => <CustomDrawer {...props} />}
     >
-      <Drawer.Screen name="social" />
-      <Drawer.Screen name="learning" />
-      <Drawer.Screen name="messages" />
-      <Drawer.Screen name="packages" />
-      <Drawer.Screen name="cvbuilder" />
-      <Drawer.Screen name="feedback" />
+   <Drawer.Screen name="social" />
+<Drawer.Screen name="learning" />
+<Drawer.Screen name="jobs" />
+<Drawer.Screen name="messages" />
+<Drawer.Screen name="packages" />
+<Drawer.Screen name="cvbuilder" />
+<Drawer.Screen name="feedback" />
     </Drawer>
   );
 }

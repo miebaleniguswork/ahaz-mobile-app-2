@@ -29,14 +29,22 @@ export default function Learning() {
     <DrawerScreenWrapper>
       <View style={styles.container}>
         <ScrollView showsVerticalScrollIndicator={false}>
-          {/* Post input */}
-          <View style={styles.postBox}>
-            <Image source={{ uri: avatarUri }} style={styles.avatar} />
+          {/* flex:row with left being Courses and right being the filter */}
+          <View style={styles.header}>
+            <Text style={{ fontSize: 20, fontWeight: "bold" }}>Courses</Text>
+            <View style={styles.postBox}>
+              {/* <Image source={{ uri: avatarUri }} style={styles.avatar} /> */}
 
-            <TextInput placeholder="Type to filter" style={styles.input} />
+              <TextInput
+                placeholder="Type to filter"
+                placeholderTextColor="#888"
+                style={styles.input}
+              />
 
-            <Ionicons name="options-outline" size={18} color="#999" />
+              <Ionicons name="options-outline" size={18} color="#999" />
+            </View>
           </View>
+          <View>{/* Post input */}</View>
 
           {/* Course card */}
           <View style={styles.card}>
@@ -71,28 +79,6 @@ export default function Learning() {
                   />
                 </TouchableOpacity>
 
-                {/* SAVE */}
-                {/* <TouchableOpacity
-                  onPress={() => setSaved(!saved)}
-                >
-                  <Ionicons
-                    name={saved ? "bookmark" : "bookmark-outline"}
-                    size={20}
-                    color={saved ? COLORS.ahaz600 : COLORS.text}
-                  />
-                </TouchableOpacity> */}
-
-                {/* COMMENT */}
-                {/* <TouchableOpacity
-                  onPress={() => setCommented(!commented)}
-                >
-                  <Ionicons
-                    name={commented ? "chatbubble" : "chatbubble-outline"}
-                    size={20}
-                    color={commented ? COLORS.ahaz600 : COLORS.text}
-                  />
-                </TouchableOpacity> */}
-
                 {/* SHARE (always outline) */}
                 <TouchableOpacity>
                   <Entypo name="share" size={20} color={COLORS.text} />
@@ -116,10 +102,11 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     backgroundColor: "#fff",
-    margin: 12,
-    padding: 10,
+    paddingHorizontal: 10,
     borderRadius: 6,
     gap: 10,
+    width: 200,
+    height: 38,
   },
 
   avatar: {
@@ -134,6 +121,7 @@ const styles = StyleSheet.create({
     borderRadius: 6,
     paddingHorizontal: 10,
     height: 38,
+    color: "#888",
   },
 
   card: {
@@ -201,5 +189,13 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
+  },
+  header: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center",
+    marginHorizontal: 12,
+    marginTop: 20,
+    padding:12
   },
 });

@@ -212,13 +212,13 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   selectedCircle: {
-    borderColor: "#1E8E14",
+    borderColor: "#14a814",
   },
   innerCircle: {
     height: 10,
     width: 10,
     borderRadius: 5,
-    backgroundColor: "#1E8E14",
+    backgroundColor: "#14a814",
   },
   radioLabel: {
     fontSize: 16,

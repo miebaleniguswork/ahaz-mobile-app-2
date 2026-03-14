@@ -147,7 +147,7 @@ const styles = StyleSheet.create({
   },
 
   nextButton: {
-    backgroundColor: "#1E8E14",
+    backgroundColor: "#49e048",
     width: "44%",
     height: 44,
     justifyContent: "center",
@@ -167,7 +167,7 @@ const styles = StyleSheet.create({
   },
 
   footer: {
-    color: "#1E8E14",
+    color: "#14a814",
     fontSize: 12,
     textAlign: "center",
     marginTop: 30,

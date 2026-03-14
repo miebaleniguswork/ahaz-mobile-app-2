@@ -30,16 +30,16 @@ export default function Login() {
   };
 
   const handleLogin = () => {
-  if (password.trim() === "") {
-    setPasswordError("Please enter your password");
-  } else {
-    setPasswordError("");
+    if (password.trim() === "") {
+      setPasswordError("Please enter your password");
+    } else {
+      setPasswordError("");
 
-    console.log("Logging in with:", username, password);
+      console.log("Logging in with:", username, password);
 
-    router.replace("/(drawer)/learning");
-  }
-};
+      router.replace("/(drawer)/learning");
+    }
+  };
 
   return (
     <KeyboardAvoidingView
@@ -54,6 +54,13 @@ export default function Login() {
         />
       </View>
 
+      <Text style={styles.createText}>Don't have an account?</Text>
+      <TouchableOpacity
+        onPress={() => router.push("/(auth)/register/registerFlow")}
+      >
+        <Text style={styles.createLink}> CREATE NEW ACCOUNT</Text>
+      </TouchableOpacity>
+
       <ScrollView
         showsVerticalScrollIndicator={false}
         keyboardShouldPersistTaps="handled"
@@ -62,8 +69,6 @@ export default function Login() {
         {phase === 1 && (
           <>
             <View style={styles.inputWrapper}>
-              <Text style={styles.label}>Username or Email</Text>
-              
               {/* Old input commented for reference */}
               {/*
               <TextInput
@@ -76,7 +81,9 @@ export default function Login() {
                 }}
               />
               */}
-              
+
+              <Text>Username or email</Text>
+
               {/* Working input */}
               <TextInput
                 style={[styles.input, usernameError ? styles.inputError : null]}
@@ -88,7 +95,9 @@ export default function Login() {
                 }}
               />
 
-              {usernameError && <Text style={styles.errorText}>{usernameError}</Text>}
+              {usernameError && (
+                <Text style={styles.errorText}>{usernameError}</Text>
+              )}
             </View>
 
             <TouchableOpacity style={styles.button} onPress={handleNext}>
@@ -98,21 +107,10 @@ export default function Login() {
             </TouchableOpacity>
 
             <TouchableOpacity
-            
               onPress={() => router.push("/(auth)/passwordForgot")}
-
             >
               <Text style={styles.forgot}>FORGOTTEN PASSWORD?</Text>
             </TouchableOpacity>
-
-            <View style={styles.createRow}>
-              <Text style={styles.createText}>Don't have an account?</Text>
-              <TouchableOpacity
-                onPress={() => router.push("/(auth)/register/registerFlow")}
-              >
-                <Text style={styles.createLink}> CREATE NEW ACCOUNT</Text>
-              </TouchableOpacity>
-            </View>
           </>
         )}
 
@@ -129,7 +127,9 @@ export default function Login() {
                 if (text.trim() !== "") setPasswordError("");
               }}
             />
-            {passwordError && <Text style={styles.errorText}>{passwordError}</Text>}
+            {passwordError && (
+              <Text style={styles.errorText}>{passwordError}</Text>
+            )}
 
             <TouchableOpacity style={styles.button} onPress={handleLogin}>
               <View style={styles.buttonContent}>
@@ -163,7 +163,18 @@ export default function Login() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#fff", padding: 25 },
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    paddingHorizontal: 25,
+    paddingTop: 100,
+  },
+
+  content: {
+    paddingHorizontal: 25,
+    paddingTop: 100,
+    paddingBottom: 40,
+  },
   logoArea: { alignItems: "center", marginTop: 60, marginBottom: 40 },
   logo: { width: 180, height: 80, resizeMode: "contain" },
   form: { paddingBottom: 40 },
@@ -173,16 +184,18 @@ const styles = StyleSheet.create({
     maxWidth: 400,
     alignSelf: "center",
     marginBottom: 12,
+    marginTop: 20,
   },
   input: {
     borderWidth: 2,
     borderColor: "#ccc",
-    height: 44,
+    height: 48,
     borderRadius: 6,
-    paddingHorizontal: 14,
+    paddingHorizontal: 16,
+    paddingVertical: 12,
     backgroundColor: "#fff",
     width: "100%",
-
+    textAlignVertical: "center", // fixes Android placeholder rendering
   },
   inputError: {
     borderColor: "#E53E3E",
@@ -193,12 +206,12 @@ const styles = StyleSheet.create({
     fontSize: 12,
   },
   button: {
-    backgroundColor: "#1E8E14",
+    backgroundColor: "#14a814",
     height: 44,
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 2,
-    marginTop: 10,
+    marginTop: 40,
   },
   buttonText: { color: "#fff", fontWeight: "700", letterSpacing: 0.5 },
   buttonContent: {
@@ -206,8 +219,22 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  forgot: { textAlign: "center", color: "#2B6CB0", marginTop: 15, fontSize: 13 },
-  createRow: { flexDirection: "row", justifyContent: "center", marginTop: 35 },
-  createText: { color: "#444" },
-  createLink: { color: "#1E8E14", fontWeight: "600" },
+  forgot: {
+    textAlign: "center",
+    color: "#2B6CB0",
+    marginTop: 15,
+    fontSize: 13,
+  },
+  createRow: {
+    flexDirection: "row",
+    justifyContent: "center",
+    marginBottom: 20,
+  },
+  createText: { color: "#444", fontSize: 20 },
+  createLink: {
+    color: "#49e048",
+    fontWeight: "600",
+    fontSize: 14,
+    marginTop: 20,
+  },
 });

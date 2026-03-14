@@ -46,13 +46,13 @@ const styles = StyleSheet.create({
     overflow: "visible",
   },
   logoContainer: {
-    borderBlockColor: "#eee",
-    flexDirection: "row",
-    alignItems: "flex-start", // aligns text with top of logo
+    // borderBlockColor: "#eee",
+    // flexDirection: "row",
+    // alignItems: "flex-start", // aligns text with top of logo
   },
   logo: {
-    width: 100,
-    height: 100,
+    width: 150,
+    height: 200,
   },
   title: {
     fontSize: 18,
