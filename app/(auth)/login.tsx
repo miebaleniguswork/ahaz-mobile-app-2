@@ -177,8 +177,8 @@ const styles = StyleSheet.create({
   },
   logoArea: { alignItems: "center", marginTop: 60, marginBottom: 40 },
   logo: { width: 180, height: 80, resizeMode: "contain" },
-  form: { paddingBottom: 40 },
-  label: { fontSize: 14, marginBottom: 6, color: "#333" },
+  form: { paddingBottom: 20 },
+  label: { fontSize: 14, marginTop: 20, color: "#333" },
   inputWrapper: {
     width: "100%",
     maxWidth: 400,

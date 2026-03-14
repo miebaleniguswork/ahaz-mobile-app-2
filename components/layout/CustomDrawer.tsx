@@ -14,22 +14,40 @@ export default function CustomDrawer(props: any) {
 
   return (
     <DrawerContentScrollView {...props}>
-      {/* Logo */}
       <View style={styles.logoContainer}>
         <Image
           source={require("@/assets/images/ahaz-logo.png")}
           style={styles.logo}
         />
       </View>
-      {/* Profile */}
-      <View style={styles.profile}>
-        <Image
-          source={{ uri: "https://i.pravatar.cc/100" }}
-          style={styles.avatar}
-        />
-        <Text style={styles.username}>Miebale Nigus</Text>
-      </View>
       {/* Drawer Items */}
+      {/* Profile */}
+      {/* this is not profile picture only. this is drawerItem with profile picture but the text gets green if clicked just as the other drawer items. i have tried to make it part of the many drawer items(which is the first one below)*/}
+
+      <DrawerItem
+        label={() => (
+          <Text
+            style={{
+              color: activeRoute === "profile" ? "#14a814" : "#777",
+              fontWeight: "600",
+              
+            }}
+          >
+            Miebale
+          </Text>
+        )}
+        icon={() => (
+          <Image
+            source={{ uri: "https://i.pravatar.cc/100" }} // dynamic profile picture
+            style={styles.avatar}
+          />
+        )}
+
+        // i want margin top 20 for the whole drawer item
+        style={[activeRoute === "profile" ? styles.activeItem : styles.item, { marginTop: 20 }]}
+
+        onPress={() => props.navigation.navigate("profile")}
+      />
       <DrawerItem
         label="Social"
         labelStyle={{
@@ -170,6 +188,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingHorizontal: 16,
     marginBottom: 20,
+    paddingTop: 20,
   },
 
   avatar: {
@@ -210,5 +229,10 @@ const styles = StyleSheet.create({
     borderRightColor: "#14a814",
     backgroundColor: "#f1fdf0",
     borderRadius: 0,
+  },
+  logoRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 10,
   },
 });

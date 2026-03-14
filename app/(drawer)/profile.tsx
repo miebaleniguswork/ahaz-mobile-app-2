@@ -49,7 +49,9 @@ export default function Learning() {
           {/* Course card */}
           <View style={styles.card}>
             <Image
-              source={require("@/assets/images/course.png")}
+              source={{
+                uri: "https://img.freepik.com/free-vector/online-learning-concept_23-2148529106.jpg",
+              }}
               style={styles.courseImage}
             />
 
@@ -94,7 +96,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#f1f1f1",
-    padding: 12
   },
 
   postBox: {
@@ -151,7 +152,7 @@ const styles = StyleSheet.create({
   },
 
   priceTag: {
-    backgroundColor: "#f1fdf0",
+    backgroundColor: "#dcfddb",
     alignSelf: "flex-start",
     paddingHorizontal: 8,
     paddingVertical: 4,
@@ -161,7 +162,7 @@ const styles = StyleSheet.create({
   },
 
   priceText: {
-    color: "#84f184",
+    color: "#138214",
     fontSize: 12,
   },
 
@@ -195,6 +196,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginHorizontal: 12,
     marginTop: 20,
-    padding: 12,
+    padding:12
   },
 });
