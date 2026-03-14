@@ -11,6 +11,7 @@ import {
 
 import DrawerScreenWrapper from "@/components/layout/DrawerScreenWrapper";
 import { Entypo, Ionicons } from "@expo/vector-icons";
+import { router } from "expo-router";
 
 const COLORS = {
   ahaz600: "#14a814",
@@ -63,7 +64,7 @@ export default function Learning() {
             </View>
 
             <View style={styles.bottomRow}>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={() => router.push("/enroll")}>
                 <Text style={styles.enroll}>ENROLL</Text>
               </TouchableOpacity>
 

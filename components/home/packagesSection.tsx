@@ -83,13 +83,13 @@ const packages = [
 
 const Packages = () => {
   return (
-    // packages: explore our plans for the following
+  
     <View style={styles.container}>
       <View style={styles.headerRow}>
-        <Text style={styles.overhead}>COURSES</Text>
+        <Text style={styles.overhead}>Packages</Text>
         <View style={styles.line} />
       </View>
-      <Text style={styles.mainTitle}>POPULAR COURSES</Text>
+      <Text style={styles.mainTitle}>Explore our Plans</Text>
       {packages.map((item, index) => (
         <Animated.View
           key={item.id}

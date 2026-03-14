@@ -25,7 +25,7 @@ import AnimatedSection from "@/components/animations/AnimatedSection";
 import HeroImage from "@/components/home/descriptionImage";
 import DescriptionContent from "@/components/home/descriptionInfo";
 import Hero from "@/components/home/hero";
-import Packages from "@/components/home/packages";
+import Packages from "@/components/home/packagesSection";
 import Trainers from "@/components/home/trainers";
 import Footer from "@/components/layout/Footer";
 import TopBar from "../../components/layout/TopBar";
