@@ -2,11 +2,13 @@ import React from "react";
 import {
   StatusBar,
   StyleSheet,
+  Text,
   TouchableOpacity,
   useWindowDimensions,
+  View,
 } from "react-native";
 import Animated, {
-  SharedValue,
+  // SharedValue,
   useAnimatedScrollHandler,
   useSharedValue,
 } from "react-native-reanimated";
@@ -16,20 +18,17 @@ import {
   MaterialCommunityIcons,
   MaterialIcons,
 } from "@expo/vector-icons";
-import { Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import AnimatedSection from "../components/animations/AnimatedSection";
-// import Footer from "../../components/layout/Footer";
-import CourseCategories from "../components/home/categories";
-import HeroImage from "../components/home/descriptionImage";
-import DescriptionContent from "../components/home/descriptionInfo";
-import Hero from "../components/home/hero";
-import Packages from "../components/home/packages";
-import Trainers from "../components/home/trainers";
-import TopBar from "../components/layout/TopBar";
-// import Footer from "@/components/layout/footer";
-import Footer from "../components/layout/Footer";
+import AnimatedSection from "@/components/animations/AnimatedSection";
+// import CourseCategories from "@/components/home/categories";
+import HeroImage from "@/components/home/descriptionImage";
+import DescriptionContent from "@/components/home/descriptionInfo";
+import Hero from "@/components/home/hero";
+import Packages from "@/components/home/packages";
+import Trainers from "@/components/home/trainers";
+import Footer from "@/components/layout/Footer";
+import TopBar from "../../components/layout/TopBar";
 
 const categories = [
   { id: "1", name: "Digital Skill", icon: "code-tags", lib: "mc" },
@@ -45,11 +44,11 @@ const categories = [
   { id: "6", name: "Tutorial", icon: "auto-fix", lib: "mc" },
 ];
 
-type RevealProgress = SharedValue<number>;
-const CourseCategoriesTyped =
-  CourseCategories as unknown as React.ComponentType<{
-    revealProgress?: RevealProgress;
-  }>;
+// type RevealProgress = SharedValue<number>;
+// const CourseCategoriesTyped =
+//   CourseCategories as unknown as React.ComponentType<{
+//     revealProgress?: RevealProgress;
+//   }>;
 
 const Home = () => {
   const scrollY = useSharedValue(0);

@@ -10,7 +10,7 @@ import {
 } from "react-native";
 
 import DrawerScreenWrapper from "@/components/layout/DrawerScreenWrapper";
-import { Feather, Ionicons } from "@expo/vector-icons";
+import { Entypo, Ionicons } from "@expo/vector-icons";
 
 const COLORS = {
   ahaz600: "#14a814",
@@ -29,22 +29,17 @@ export default function Learning() {
     <DrawerScreenWrapper>
       <View style={styles.container}>
         <ScrollView showsVerticalScrollIndicator={false}>
-
           {/* Post input */}
           <View style={styles.postBox}>
             <Image source={{ uri: avatarUri }} style={styles.avatar} />
 
-            <TextInput
-              placeholder="Type to filter"
-              style={styles.input}
-            />
+            <TextInput placeholder="Type to filter" style={styles.input} />
 
             <Ionicons name="options-outline" size={18} color="#999" />
           </View>
 
           {/* Course card */}
           <View style={styles.card}>
-
             <Image
               source={{
                 uri: "https://img.freepik.com/free-vector/online-learning-concept_23-2148529106.jpg",
@@ -53,24 +48,22 @@ export default function Learning() {
             />
 
             <Text style={styles.courseTitle}>Computer Essentials</Text>
-            <Text style={styles.courseSub}>Digital Skill</Text>
+            <View style={styles.courseInfo}>
+              <Text style={styles.courseSub}>Digital Skill</Text>
 
-            <View style={styles.priceTag}>
-              <Text style={styles.priceText}>Br. 699.99</Text>
+              <View style={styles.priceTag}>
+                <Text style={styles.priceText}>Br. 699.99</Text>
+              </View>
             </View>
 
             <View style={styles.bottomRow}>
-
               <TouchableOpacity>
                 <Text style={styles.enroll}>ENROLL</Text>
               </TouchableOpacity>
 
               <View style={styles.actions}>
-
                 {/* LIKE */}
-                <TouchableOpacity
-                  onPress={() => setLiked(!liked)}
-                >
+                <TouchableOpacity onPress={() => setLiked(!liked)}>
                   <Ionicons
                     name={liked ? "heart" : "heart-outline"}
                     size={20}
@@ -79,7 +72,7 @@ export default function Learning() {
                 </TouchableOpacity>
 
                 {/* SAVE */}
-                <TouchableOpacity
+                {/* <TouchableOpacity
                   onPress={() => setSaved(!saved)}
                 >
                   <Ionicons
@@ -87,10 +80,10 @@ export default function Learning() {
                     size={20}
                     color={saved ? COLORS.ahaz600 : COLORS.text}
                   />
-                </TouchableOpacity>
+                </TouchableOpacity> */}
 
                 {/* COMMENT */}
-                <TouchableOpacity
+                {/* <TouchableOpacity
                   onPress={() => setCommented(!commented)}
                 >
                   <Ionicons
@@ -98,22 +91,15 @@ export default function Learning() {
                     size={20}
                     color={commented ? COLORS.ahaz600 : COLORS.text}
                   />
-                </TouchableOpacity>
+                </TouchableOpacity> */}
 
                 {/* SHARE (always outline) */}
                 <TouchableOpacity>
-                  <Feather
-                    name="share-2"
-                    size={20}
-                    color={COLORS.text}
-                  />
+                  <Entypo name="share" size={20} color={COLORS.text} />
                 </TouchableOpacity>
-
               </View>
             </View>
-
           </View>
-
         </ScrollView>
       </View>
     </DrawerScreenWrapper>
@@ -121,7 +107,6 @@ export default function Learning() {
 }
 
 const styles = StyleSheet.create({
-
   container: {
     flex: 1,
     backgroundColor: "#f1f1f1",
@@ -197,7 +182,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginTop: 10,
+    marginTop: 40,
     paddingHorizontal: 12,
   },
 
@@ -211,4 +196,10 @@ const styles = StyleSheet.create({
     gap: 16,
   },
 
+  courseInfo: {
+    // marginTop: 20,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
 });
